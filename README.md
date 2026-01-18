@@ -34,10 +34,10 @@ Sistema de gestión de biblioteca desarrollado como proyecto académico para el 
 
 ## Autores
 
-Uriel Andrade
-Kerly Chuqui
-Victoria Diaz
-Yostin Sisalema
+- Uriel Andrade
+- Kerly Chuqui
+- Victoria Diaz
+- Yostin Sisalema
 
 ## Licencia
 
