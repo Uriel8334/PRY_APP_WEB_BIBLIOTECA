@@ -51,4 +51,4 @@ const AppEvents = {
     }
 };
 
-window.AppEvents = AppEvents;
+export default AppEvents;
