@@ -118,7 +118,7 @@
 			</div> -->
 		</div>
 	</nav>
-	<nav class="navbar navbar-expand navbar-light bg-white topbar shadow-sm fixed-top">
+	<nav class="navbar navbar-expand navbar-light bg-white topbar shadow-sm fixed-top" id="nav_start">
 		<div class="container-fluid">
 			<!-- Hamburger Button -->
 			<button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggle" type="button">
@@ -393,6 +393,12 @@
 
 			}
 		}
+
+		function updateModeClass() {
+			document.body.classList.toggle('nav.na', window.innerWidth < 768);
+		}
+
+
 		// Función para activar items (solo si existen)
 		function activityItems(items, tooltips) {
 			if (!items || items.length === 0) return;
@@ -449,7 +455,10 @@
 
 		// Animación de carga
 		window.addEventListener('load', () => {
-			setTimeout(() => document.body.classList.add('bg-started'), 200);
+			setTimeout(() => {
+				document.body.classList.add('bg-started')
+				document.getElementById('.nav_start').classList.add('')
+			}, 200);
 		});
 		if (searchToggle && searchForm) {
 			searchToggle.addEventListener('click', function (e) {
