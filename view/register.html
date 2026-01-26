@@ -39,25 +39,30 @@
                 <div class="row g-0">
 
                     <div class="col-md-6 p-5 bg-white">
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <h2 class="fw-bold text-dark" style="font-size: 2rem;">Registro de Usuario</h2>
                         </div>
 
-                        <form action="" method="post">
+                        <form action="" method="post" id="formularioRegistroUsuario" class="needs-validation"
+                            novalidate>
                             <div class="input-custom-group">
                                 <svg class="icon-style">
                                     <use xlink:href="#icon-person" />
                                 </svg>
                                 <input type="text" class="form-control" name="fullname" placeholder="Julio Cesar"
+                                    id="nombreCompleto" data-validate="nombre_completo" autocomplete="new-name"
                                     required>
+                                <!-- <div class="invalid-feedback"></div> -->
                             </div>
 
-                            <div class="input-custom-group">
+                            <div class="input-custom-group ">
                                 <svg class="icon-style">
                                     <use xlink:href="#icon-envelope" />
                                 </svg>
                                 <input type="email" class="form-control" name="email"
-                                    placeholder="Tu correo electrónico" required>
+                                    placeholder="Tu correo electrónico" id="correoElectronico"
+                                    data-validate="correo_electronico" required>
+                                <!-- <div class="invalid-feedback "></div> -->
                             </div>
 
                             <div class="input-custom-group">
@@ -65,7 +70,9 @@
                                     <use xlink:href="#icon-person-circle" />
                                 </svg>
                                 <input type="text" class="form-control" name="username" placeholder="Nombre de usuario"
+                                    id="nombreUsuario" data-validate="nombre_usuario" autocomplete="new-username"
                                     required>
+                                <!-- <div class="invalid-feedback"></div> -->
                             </div>
 
                             <div class="input-custom-group">
@@ -73,28 +80,35 @@
                                     <use xlink:href="#icon-lock" />
                                 </svg>
                                 <input type="password" class="form-control" name="password" placeholder="Contraseña"
-                                    required>
+                                    id="contrasena" data-validate="contrasena" autocomplete="new-password" required>
+
+                                <!-- <div class="invalid-feedback"></div> -->
                             </div>
 
-                            <div class="input-custom-group">
+                            <div class="input-custom-group ">
                                 <svg class="icon-style">
                                     <use xlink:href="#icon-lock" />
                                 </svg>
                                 <input type="password" class="form-control" name="confirm_password"
-                                    placeholder="Repite tu contraseña" required>
+                                    placeholder="Repite tu contraseña" id="confirmarContrasena"
+                                    data-validate="confirmar_contrasena" autocomplete="new-password" required>
+
+                                <!-- <div class="invalid-feedback"></div> -->
                             </div>
 
                             <div class="mb-4 form-check">
-                                <input type="checkbox" class="form-check-input" id="terms" required>
-                                <label class="form-check-label small text-muted" for="terms">
+                                <label class="form-check-label small text-muted" for="terminosCondiciones">
                                     Yo acepto todas las declaraciones en <a href="#"
                                         class="text-dark fw-bold text-decoration-underline">Términos de servicio</a>
                                 </label>
+                                <input type="checkbox" class="form-check-input" id="terminosCondiciones" required>
+                                <!-- <div class="invalid-feedback"></div> -->
                             </div>
 
-                            <div class="d-flex justify-content-between align-items-center mt-4">
+                            <div class="d-flex justify-content-between align-items-center p-0">
                                 <button type="submit" class="btn px-5 py-2 rounded-3 fw-bold shadow-sm"
-                                    style="background-color: rgb(78, 194, 108) ; border: none;">
+                                    style="background-color: rgb(78, 194, 108) ; border: none;"
+                                    id="btnRegistrarUsuario">
                                     Registrarse
                                 </button>
 
@@ -106,7 +120,7 @@
                         </form>
                     </div>
 
-                    <div class="col-md-6 d-none d-md-block">
+                    <div class="col-md-6 p-0 d-none d-md-block">
                         <div class="h-100 d-flex align-items-center justify-content-center bg-white">
                             <div class="text-center p-4">
                                 <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" alt="Workspace"
@@ -119,10 +133,13 @@
             </div>
         </div>
     </main>
-    <footer>
+    <footer></footer>
+    <script src="../public/js/main.js"></script>
+    <script src="../public/js/storage.js"></script>
+    <script src="../public/js/validarEntradaDatos.js"></script>
+    <script src="../public/js/registro.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -52,47 +52,48 @@ nav.page-navigation li {
     height: 30px;
 }
 
-/* El contenedor de cada input (la línea de abajo) */
-        .input-custom-group {
-            display: flex;
-            align-items: center;
-            border-radius: 6px;
-            border-bottom: 2px solid #000000;
-            /* Línea gris suave */
-            padding-bottom: 5px;
-            margin-bottom: 1.5rem;
-            /* Espacio entre inputs */
-            transition: border-color 0.3s ease;
-        }
+.input-custom-group {
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    border-bottom: 2px solid #000000;
+    /* Línea gris suave */
+    padding-bottom: 5px;
+    margin-bottom: 1.5rem;
+    /* Espacio entre inputs */
+    transition: border-color 0.3s ease;
+}
 
-        /* Efecto al hacer clic: la línea se pone azul */
-        .input-custom-group:focus-within, .input[placeholder]:focus-within {
-            border-bottom: 2px solid rgb(78, 194, 108);
-        }
+/* Efecto al hacer clic: la línea se pone azul */
+.input-custom-group:focus-within {
+    border-bottom: 2px solid rgb(78, 194, 108);
+}
 
-        /* El input en sí: transparente y sin bordes */
-        .input-custom-group input {
-            border: none;
-            background: transparent;
-            outline: none;
-            box-shadow: none !important;
-            /* Quita el brillo azul feo */
-            padding-left: 10px;
-            color: #495057;
-            font-weight: 500;
-        }
+/* El input en sí: transparente y sin bordes */
+.input-custom-group input {
+    border: none;
+    background: transparent;
+    outline: none;
+    box-shadow: none !important;
+    /* Quita el brillo azul feo */
+    padding-left: 10px;
+    color: #495057;
+    font-weight: 500;
+}
 
-        /* Color de los iconos */
-        .icon-style {
-            fill: #686767;
-            width: 18px;
-            height: 18px;
-        }
+/* Color de los iconos */
+.icon-style {
+    fill: #686767;
+    width: 18px;
+    height: 18px;
+}
 
-        /* Cuando el input está activo, el icono también se pone azul (opcional) */
-        .input-custom-group:focus-within .icon-style {
-            fill: rgb(78, 194, 108);
-        }
+/* Cuando el input está activo, el icono también se pone azul (opcional) */
+.input-custom-group:focus-within .icon-style {
+    width: 18px;
+    height: 18px;
+    fill: rgb(78, 194, 108);
+}
 
 
 .alertCenter {

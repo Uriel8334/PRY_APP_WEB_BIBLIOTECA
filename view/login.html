@@ -56,13 +56,14 @@
                             <h2 class="fw-bold text-dark" style="font-size: 2rem;">Inicia Sesión</h2>
                         </div>
 
-                        <form action="" method="post">
+                        <form action="" method="post" id="formularioLogin" novalidate>
                             <div class="input-custom-group">
                                 <svg class="icon-style">
                                     <use xlink:href="#icon-person-circle" />
                                 </svg>
                                 <input type="text" class="form-control" name="username" placeholder="Nombre de usuario"
-                                    required>
+                                 id="inicioUsuario" data-validate="nombreUsuario"   required >
+                                <!-- <div class="invalid-feedback "></div> -->
                             </div>
 
                             <div class="input-custom-group">
@@ -70,7 +71,8 @@
                                     <use xlink:href="#icon-lock" />
                                 </svg>
                                 <input type="password" class="form-control" name="password" placeholder="Contraseña"
-                                    required>
+                                    id="contraseña" data-validate="contraseña" required>
+                                <!-- <div class="invalid-feedback "></div> -->
                             </div>
 
                             <div class="mb-4 form-check">
@@ -78,10 +80,11 @@
                                 <label class="form-check-label small text-muted" for="terms">
                                     <a href="#" class="text-dark fw-bold text-decoration-underline">Recordarme</a>
                                 </label>
+                                <div class="invalid-feedback "></div>
                             </div>
 
                             <button type="submit" class="btn px-5 py-2 rounded-3 fw-bold shadow-sm"
-                                style="background-color: rgb(78, 194, 108) ; border: none;" onclick="validarCuenta">
+                                style="background-color: rgb(78, 194, 108) ; border: none;" id="btnIniciarSesion">
                                 Ingresar
                             </button>
                         </form>
@@ -124,8 +127,11 @@
             </div>
     </main>
     <footer></footer>
+    <script src="../public/js/main.js"></script>
+    <script src="../public/js/storage.js"></script>
+    <script src="../public/js/validarEntradaDatos.js"></script>
+    <script src="../public/js/registro.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src=""></script>
 </body>
 
 </html>
