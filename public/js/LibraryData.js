@@ -1,5 +1,5 @@
 /**
- * MODELO DE DATOS (Responsabilidad de Kerly)
+ * MODELO DE DATOS
  * Actualizado con LocalStorage para persistencia de datos e imágenes.
  */
 
@@ -10,7 +10,7 @@ class Libro {
         this.autor = autor;
         this.genero = genero;
         // Si no hay portada, usamos una genérica
-        this.portada = portada || 'https://via.placeholder.com/150?text=Sin+Portada'; 
+        this.portada = portada || 'https://via.placeholder.com/150?text=Sin+Portada';// URL de imagen
         this.disponible = true;
         this.fechaPrestamo = null;
     }
@@ -20,10 +20,10 @@ const Biblioteca = {
     // Array principal
     libros: [],
 
-    // CLAVE PARA LOCALSTORAGE (El nombre de nuestra "caja fuerte")
+    // CLAVE PARA LOCALSTORAGE
     storageKey: 'biblioteca_virginia_data',
 
-    // 1. INICIALIZAR: Intenta cargar del storage, si no hay nada, crea datos base
+    // 1. INICIALIZAR: Intenta cargar del localStorage, si no hay nada, crea datos base
     inicializar: function() {
         const datosGuardados = localStorage.getItem(this.storageKey);
 
@@ -52,12 +52,12 @@ const Biblioteca = {
         this.agregarLibro(new Libro("Clean Code", "Robert C. Martin", "Tecnología", "https://m.media-amazon.com/images/I/41xShlnTZTL.jpg"), false);
     },
 
-    // CRUD ACTUALIZADO (Ahora guardan automáticamente)
+    // CRUD
     
     // El parámetro 'guardar' es opcional, sirve para no guardar repetidamente en la carga inicial
     agregarLibro: function(nuevoLibro, guardar = true) {
         this.libros.push(nuevoLibro);
-        if (guardar) this.guardarDatos(); 
+        if (guardar) this.guardarDatos();
         return nuevoLibro;
     },
 
