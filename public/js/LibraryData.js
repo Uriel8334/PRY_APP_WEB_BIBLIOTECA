@@ -1,67 +1,90 @@
 /**
  * MODELO DE DATOS (Responsabilidad de Kerly)
- * Este archivo contiene la clase Libro y la gestión del Array principal.
+ * Actualizado con LocalStorage para persistencia de datos e imágenes.
  */
 
-// 1. Definimos el plano de lo que es un "Libro"
 class Libro {
     constructor(titulo, autor, genero, portada) {
-        this.id = Date.now(); // Genera un ID único basado en el tiempo
+        this.id = Date.now(); 
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
-        this.portada = portada || 'https://via.placeholder.com/150'; // Portada por defecto
-        this.disponible = true; // Por defecto todos inician disponibles
+        // Si no hay portada, usamos una genérica
+        this.portada = portada || 'https://via.placeholder.com/150?text=Sin+Portada'; 
+        this.disponible = true;
         this.fechaPrestamo = null;
     }
 }
 
-// 2. Gestionamos la colección de libros (La Biblioteca)
 const Biblioteca = {
-    // Array principal donde vivirán todos los libros
+    // Array principal
     libros: [],
 
-    // Inicializar con algunos datos de prueba (Para que la web no se vea vacía)
+    // CLAVE PARA LOCALSTORAGE (El nombre de nuestra "caja fuerte")
+    storageKey: 'biblioteca_virginia_data',
+
+    // 1. INICIALIZAR: Intenta cargar del storage, si no hay nada, crea datos base
     inicializar: function() {
-        this.agregarLibro(new Libro("Cien años de soledad", "Gabriel García Márquez", "Novela", "https://images.penguinrandomhouse.com/cover/9780307474728"));
-        this.agregarLibro(new Libro("El Principito", "Antoine de Saint-Exupéry", "Infantil", "https://images.penguinrandomhouse.com/cover/9780156012195"));
-        this.agregarLibro(new Libro("1984", "George Orwell", "Ciencia Ficción", "https://images.penguinrandomhouse.com/cover/9780451524935"));
-        this.agregarLibro(new Libro("JavaScript: The Good Parts", "Douglas Crockford", "Tecnología", ""));
-        console.log("📚 Biblioteca inicializada con éxito.");
+        const datosGuardados = localStorage.getItem(this.storageKey);
+
+        if (datosGuardados) {
+            // Si existen datos, los convertimos de Texto a Objetos reales
+            this.libros = JSON.parse(datosGuardados);
+            console.log("💾 Datos cargados desde LocalStorage");
+        } else {
+            // Si es la primera vez que entran, cargamos datos de prueba
+            this.cargarDatosPrueba();
+            this.guardarDatos(); // Guardamos estos datos iniciales
+            console.log("🆕 Carga inicial con datos por defecto");
+        }
     },
 
-    // CRUD: CREATE (Añadir libro)
-    // Usamos .push() para añadir al final del array
-    agregarLibro: function(nuevoLibro) {
+    // Función auxiliar para guardar en el navegador
+    guardarDatos: function() {
+        // Convertimos el Array de objetos a un STRING JSON
+        const stringDeLibros = JSON.stringify(this.libros);
+        localStorage.setItem(this.storageKey, stringDeLibros);
+    },
+
+    cargarDatosPrueba: function() {
+        this.agregarLibro(new Libro("Cien años de soledad", "Gabriel G. Marquez", "Novela", "https://images.penguinrandomhouse.com/cover/9780307474728"), false);
+        this.agregarLibro(new Libro("El Principito", "Antoine de Saint-Exupéry", "Infantil", "https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg"), false);
+        this.agregarLibro(new Libro("Clean Code", "Robert C. Martin", "Tecnología", "https://m.media-amazon.com/images/I/41xShlnTZTL.jpg"), false);
+    },
+
+    // CRUD ACTUALIZADO (Ahora guardan automáticamente)
+    
+    // El parámetro 'guardar' es opcional, sirve para no guardar repetidamente en la carga inicial
+    agregarLibro: function(nuevoLibro, guardar = true) {
         this.libros.push(nuevoLibro);
+        if (guardar) this.guardarDatos(); 
         return nuevoLibro;
     },
 
-    // CRUD: DELETE (Eliminar libro)
-    // Usamos .findIndex() para localizar y .splice() para borrar
     eliminarLibro: function(id) {
-        const index = this.libros.findIndex(libro => libro.id === id);
-        if (index !== -1) {
-            this.libros.splice(index, 1); // Elimina 1 elemento en la posición index
-            return true; // Éxito
+        // Filtramos para quedarnos con todos MENOS el que queremos borrar
+        const longitudAnterior = this.libros.length;
+        this.libros = this.libros.filter(libro => libro.id !== id);
+        
+        if (this.libros.length < longitudAnterior) {
+            this.guardarDatos(); // Actualizamos la memoria
+            return true;
         }
-        return false; // No encontrado
+        return false;
     },
 
-    // LÓGICA DE NEGOCIO: Prestar/Devolver
     toggleDisponibilidad: function(id) {
         const libro = this.libros.find(l => l.id === id);
         if (libro) {
             libro.disponible = !libro.disponible;
             libro.fechaPrestamo = libro.disponible ? null : new Date();
+            this.guardarDatos(); // Guardar el cambio de estado
             return libro;
         }
         return null;
     }
 };
 
-// Ejecutamos la carga inicial
+// Arrancamos la lógica
 Biblioteca.inicializar();
-
-// Hacemos la Biblioteca accesible globalmente para que Uriel y Vicky la usen
 window.Biblioteca = Biblioteca;
