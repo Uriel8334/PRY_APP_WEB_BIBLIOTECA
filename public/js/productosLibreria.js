@@ -10,7 +10,9 @@ const ProductosLibreria = {
         filtroGenero: null,
     },
 
-    init: function() {
+    init: function () {
+        console.log('Inicializando ProductosLibreria...');
+
         // Obtener referencias a los elementos del DOM
         this.elementos.container = document.getElementById('libros-container');
         this.elementos.modal = document.getElementById('modal-libro');
@@ -18,31 +20,45 @@ const ProductosLibreria = {
         this.elementos.buscarInput = document.getElementById('buscar-libro');
         this.elementos.filtroGenero = document.getElementById('filtro-genero');
 
+        console.log('Elementos del DOM encontrados:', {
+            container: !!this.elementos.container,
+            modal: !!this.elementos.modal,
+            spinner: !!this.elementos.loadingSpinner
+        });
+
         if (!this.elementos.container) {
-            console.error('No se encontró el contenedor de libros');
+            console.error('No se encontro el contenedor de libros');
             return;
         }
 
         this.cargarLibros();
-
         this.configurarEventListeners();
     },
 
-    cargarLibros: function() {
+    cargarLibros: function () {
+        console.log('Cargando libros...');
+        console.log('Biblioteca disponible:', !!window.Biblioteca);
+
         // Simular carga (en un caso real sería una llamada a API)
         setTimeout(() => {
             if (window.Biblioteca && window.Biblioteca.libros) {
                 this.librosActuales = [...window.Biblioteca.libros];
+                console.log('Libros cargados:', this.librosActuales.length);
+
                 this.renderizarLibros(this.librosActuales);
-                this.elementos.loadingSpinner.style.display = 'none';
+
+                if (this.elementos.loadingSpinner) {
+                    this.elementos.loadingSpinner.style.display = 'none';
+                }
             } else {
                 console.error('No se encontraron datos en Biblioteca');
+                console.log('Objeto Biblioteca:', window.Biblioteca);
                 this.mostrarError();
             }
         }, 500);
     },
 
-    configurarEventListeners: function() {
+    configurarEventListeners: function () {
         // Búsqueda por texto
         if (this.elementos.buscarInput) {
             this.elementos.buscarInput.addEventListener('input', () => {
@@ -82,12 +98,12 @@ const ProductosLibreria = {
         });
     },
 
-    filtrarLibros: function() {
+    filtrarLibros: function () {
         const busqueda = this.elementos.buscarInput.value.toLowerCase();
         const generoFiltro = this.elementos.filtroGenero.value;
 
         const librosFiltrrados = this.librosActuales.filter(libro => {
-            const coincideBusqueda = 
+            const coincideBusqueda =
                 libro.titulo.toLowerCase().includes(busqueda) ||
                 libro.autor.toLowerCase().includes(busqueda);
 
@@ -99,7 +115,9 @@ const ProductosLibreria = {
         this.renderizarLibros(librosFiltrrados);
     },
 
-    renderizarLibros: function(libros) {
+    renderizarLibros: function (libros) {
+        console.log('Renderizando libros:', libros.length);
+
         if (libros.length === 0) {
             this.elementos.container.innerHTML = `
                 <div class="sin-resultados">
@@ -110,6 +128,8 @@ const ProductosLibreria = {
         }
 
         const html = libros.map(libro => this.crearTarjetaLibro(libro)).join('');
+        console.log('HTML generado, longitud:', html.length);
+
         this.elementos.container.innerHTML = html;
 
         // Agregar event listeners a las tarjetas
@@ -120,9 +140,11 @@ const ProductosLibreria = {
                 this.abrirModal(libroId);
             });
         });
+
+        console.log('Tarjetas renderizadas:', libros.length);
     },
 
-    crearTarjetaLibro: function(libro) {
+    crearTarjetaLibro: function (libro) {
         const claseBadge = libro.disponible ? 'badge-disponible' : 'badge-prestado';
         const textoDisponibilidad = libro.disponible ? 'Disponible' : 'Prestado';
 
@@ -144,7 +166,7 @@ const ProductosLibreria = {
         `;
     },
 
-    abrirModal: function(libroId) {
+    abrirModal: function (libroId) {
         const libro = window.Biblioteca.libros.find(l => l.id === libroId);
         if (!libro) return;
 
@@ -177,19 +199,19 @@ const ProductosLibreria = {
         this.elementos.modal.classList.add('activo');
     },
 
-    cerrarModal: function() {
+    cerrarModal: function () {
         this.elementos.modal.classList.remove('activo');
         this.libroSeleccionado = null;
     },
 
-    solicitarPrestamo: function() {
+    solicitarPrestamo: function () {
         if (!this.libroSeleccionado) return;
 
         const libro = window.Biblioteca.toggleDisponibilidad(this.libroSeleccionado.id);
-        
+
         if (libro) {
             this.mostrarNotificacion('Préstamo solicitado exitosamente', 'success');
-            
+
             // Actualizar el modal
             setTimeout(() => {
                 this.abrirModal(libro.id);
@@ -198,14 +220,14 @@ const ProductosLibreria = {
         }
     },
 
-    registrarDevolucion: function() {
+    registrarDevolucion: function () {
         if (!this.libroSeleccionado) return;
 
         const libro = window.Biblioteca.toggleDisponibilidad(this.libroSeleccionado.id);
-        
+
         if (libro) {
             this.mostrarNotificacion('Devolución registrada exitosamente', 'success');
-            
+
             // Actualizar el modal
             setTimeout(() => {
                 this.abrirModal(libro.id);
@@ -214,7 +236,7 @@ const ProductosLibreria = {
         }
     },
 
-    mostrarNotificacion: function(mensaje, tipo) {
+    mostrarNotificacion: function (mensaje, tipo) {
         // Si existe NotificationService, usarlo
         if (window.NotificationService) {
             window.NotificationService.mostrarNotificacion(mensaje, tipo);
@@ -224,7 +246,7 @@ const ProductosLibreria = {
         }
     },
 
-    mostrarError: function() {
+    mostrarError: function () {
         this.elementos.container.innerHTML = `
             <div class="alert alert-danger" role="alert">
                 Error al cargar los libros. Por favor, intenta más tarde.
