@@ -257,101 +257,149 @@
 					</div>
 				</form>
 
-			<!-- Right Side Icons -->
-			<ul class="navbar-nav ms-auto d-flex flex-row align-items-center">
-				<!-- Search Icon (mobile) -->
-				<li class="nav-item dropdown me-3 d-md-show">
-					<a class="nav-link position-relative" href="#" role="button" id="searchToggle" aria-label="Search"
-						data-bs-toggle="dropdown" data-bs-placement="bottom" data-bs-original-title="Buscar">
-						<svg class="icons">
-							<use xlink:href="#search"></use>
-						</svg>
-					</a>
-				</li>
+				<!-- Right Side Icons -->
+				<ul
+					class="navbar-nav ms-auto d-flex flex-row align-items-center"
+				>
+					<!-- Search Icon (mobile) -->
+					<li class="nav-item dropdown me-3 d-md-show">
+						<a
+							class="nav-link position-relative"
+							href="#"
+							role="button"
+							id="searchToggle"
+							aria-label="Search"
+							data-bs-toggle="dropdown"
+							data-bs-placement="bottom"
+							data-bs-original-title="Buscar"
+						>
+							<svg class="icons">
+								<use xlink:href="#search"></use>
+							</svg>
+						</a>
+					</li>
 
-				<!-- Alerts -->
-				<li class="nav-item dropdown me-3">
-					<a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown"
-						data-bs-placement="bottom" aria-label="Notifications" data-bs-original-title="Notificaciones" id="alertsIcon">
-						<svg class="icons">
-							<use xlink:href="#notificaciones"></use>
-						</svg>
-						<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger  "
-							style="font-size: 0.95rem;" id="numero_notificaciones">
-							0
-						</span>
-					</a>
-					<ul class="alertCenter dropdown-menu dropdown-menu-end" id="alertsMenu">
-						<li class="dropdown-header">Centro de Alertas</li>
-						<!-- Linea que divide  -->
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item" onclick="nuevasAlertas()">0</a></li>
-					</ul>
-				</li>
+					<!-- Alerts -->
+					<li class="nav-item dropdown me-3">
+						<a
+							class="nav-link position-relative"
+							href="#"
+							role="button"
+							data-bs-toggle="dropdown"
+							data-bs-placement="bottom"
+							aria-label="Notifications"
+							data-bs-original-title="Notificaciones"
+							id="alertsIcon"
+						>
+							<svg class="icons">
+								<use xlink:href="#notificaciones"></use>
+							</svg>
+							<span
+								class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger  "
+								style="font-size: 0.95rem;"
+								id="numero_notificaciones"
+							>
+								0
+							</span>
+						</a>
+						<ul
+							class="alertCenter dropdown-menu dropdown-menu-end"
+							id="alertsMenu"
+						>
+							<li class="dropdown-header">Centro de Alertas</li>
+							<!-- Linea que divide  -->
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									onclick="nuevasAlertas()"
+									>0</a
+								>
+							</li>
+						</ul>
+					</li>
 
-				<!-- User Profile -->
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
-						data-bs-toggle="dropdown" data-bs-placement="bottom" aria-label="User Account"
-						data-bs-original-title="Usuario" id="userProfile1">
-						<img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" class=" icons me-2" alt="User">
-					</a>
-					<ul class="dropdown-menu dropdown-menu-end" id="userProfile">
-						<li class="dropdown-header">
-							<div class="fw-bold" id="entradaNombreCompleto"></div>
-							<div class="text-muted small" id="entradaEmail"></div>
-						</li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li>
-							<a class="dropdown-item" href="#">
-								<svg class="icons me-2">
-									<use xlink:href="#people"></use>
-								</svg>Account
-							</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="view/login.html">
-								<svg class="icons me-2">
-									<use xlink:href="#cerrar_seccion"></use>
-								</svg> Salir
-							</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	<main>
-		<div class="main-content">
-		</div>
-	</main>
+					<!-- User Profile -->
+					<li class="nav-item dropdown">
+						<a
+							class="nav-link dropdown-toggle d-flex align-items-center"
+							href="#"
+							role="button"
+							data-bs-toggle="dropdown"
+							data-bs-placement="bottom"
+							aria-label="User Account"
+							data-bs-original-title="Usuario"
+							id="userProfile1"
+						>
+							<img
+								src="https://cdn-icons-png.flaticon.com/512/29/29302.png"
+								class=" icons me-2"
+								alt="User"
+							/>
+						</a>
+						<ul
+							class="dropdown-menu dropdown-menu-end"
+							id="userProfile"
+						>
+							<li class="dropdown-header">
+								<div
+									class="fw-bold"
+									id="entradaNombreCompleto"
+								></div>
+								<div
+									class="text-muted small"
+									id="entradaEmail"
+								></div>
+							</li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">
+									<svg class="icons me-2">
+										<use xlink:href="#people"></use>
+									</svg>
+									Account
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="view/login.html">
+									<svg class="icons me-2">
+										<use xlink:href="#cerrar_seccion"></use>
+									</svg>
+									Salir
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<main>
+			<div class="main-content"></div>
+		</main>
 
+		<footer></footer>
 
-	<footer></footer>
-
-	<script src="./public/js/main.js"></script>
-	<!-- <script src="./public/js/validarEntradaDatos.js"></script> -->
-	<script src="./public/js/storage.js"></script>
-	<script src="./public/js/prueba.js"></script>
-	<script>
-		// Animación de carga
-		window.addEventListener('load', () => {
-			setTimeout(() => {
-				document.body.classList.add('bg-started')
-				document.getElementById('.nav_start').classList.add('')
-			}, 200);
-		});
-
-	</script>
-	<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="./public/js/LibraryData.js"></script>
-	<script src="./public/js/prueba.js"></script>
-</body>
-
+		<script src="./public/js/main.js"></script>
+		<!-- <script src="./public/js/validarEntradaDatos.js"></script> -->
+		<script src="./public/js/storage.js"></script>
+		<script src="./public/js/prueba.js"></script>
+		<script>
+			// Animación de carga
+			window.addEventListener('load', () => {
+				setTimeout(() => {
+					document.body.classList.add('bg-started')
+					document.getElementById('.nav_start').classList.add('')
+				}, 200);
+			});
+		</script>
+		<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="./public/js/LibraryData.js"></script>
+		<script src="./public/js/prueba.js"></script>
+	</body>
 </html>
 
 <!-- // ...existing code...
