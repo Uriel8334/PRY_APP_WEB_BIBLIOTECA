@@ -1,89 +1,96 @@
-const ProductosLibreria = {
-    librosActuales: [],
-    libroSeleccionado: null,
+var ProductosLibreria = (function () {
+    // Si ya existe, retornar la instancia existente (Singleton)
+    if (window.ProductosLibreria) {
+        console.log('ProductosLibreria ya existe, reutilizando instancia');
+        return window.ProductosLibreria;
+    }
 
-    elementos: {
+    // Variables privadas
+    var librosActuales = [];
+    var libroSeleccionado = null;
+
+    var elementos = {
         container: null,
         modal: null,
         loadingSpinner: null,
         buscarInput: null,
-        filtroGenero: null,
-    },
+        filtroGenero: null
+    };
 
-    init: function () {
+    function init() {
         console.log('Inicializando ProductosLibreria...');
 
         // Obtener referencias a los elementos del DOM
-        this.elementos.container = document.getElementById('libros-container');
-        this.elementos.modal = document.getElementById('modal-libro');
-        this.elementos.loadingSpinner = document.getElementById('loading-spinner');
-        this.elementos.buscarInput = document.getElementById('buscar-libro');
-        this.elementos.filtroGenero = document.getElementById('filtro-genero');
+        elementos.container = document.getElementById('libros-container');
+        elementos.modal = document.getElementById('modal-libro');
+        elementos.loadingSpinner = document.getElementById('loading-spinner');
+        elementos.buscarInput = document.getElementById('buscar-libro');
+        elementos.filtroGenero = document.getElementById('filtro-genero');
 
         console.log('Elementos del DOM encontrados:', {
-            container: !!this.elementos.container,
-            modal: !!this.elementos.modal,
-            spinner: !!this.elementos.loadingSpinner
+            container: !!elementos.container,
+            modal: !!elementos.modal,
+            spinner: !!elementos.loadingSpinner
         });
 
-        if (!this.elementos.container) {
+        if (!elementos.container) {
             console.error('No se encontro el contenedor de libros');
             return;
         }
 
-        this.cargarLibros();
-        this.configurarEventListeners();
-    },
+        cargarLibros();
+        configurarEventListeners();
+    }
 
-    cargarLibros: function () {
+    function cargarLibros() {
         console.log('Cargando libros...');
         console.log('Biblioteca disponible:', !!window.Biblioteca);
 
         // Simular carga (en un caso real sería una llamada a API)
         setTimeout(() => {
             if (window.Biblioteca && window.Biblioteca.libros) {
-                this.librosActuales = [...window.Biblioteca.libros];
-                console.log('Libros cargados:', this.librosActuales.length);
+                librosActuales = [...window.Biblioteca.libros];
+                console.log('Libros cargados:', librosActuales.length);
 
-                this.renderizarLibros(this.librosActuales);
+                renderizarLibros(librosActuales);
 
-                if (this.elementos.loadingSpinner) {
-                    this.elementos.loadingSpinner.style.display = 'none';
+                if (elementos.loadingSpinner) {
+                    elementos.loadingSpinner.style.display = 'none';
                 }
             } else {
                 console.error('No se encontraron datos en Biblioteca');
                 console.log('Objeto Biblioteca:', window.Biblioteca);
-                this.mostrarError();
+                mostrarError();
             }
         }, 500);
-    },
+    }
 
-    configurarEventListeners: function () {
+    function configurarEventListeners() {
         // Búsqueda por texto
-        if (this.elementos.buscarInput) {
-            this.elementos.buscarInput.addEventListener('input', () => {
-                this.filtrarLibros();
+        if (elementos.buscarInput) {
+            elementos.buscarInput.addEventListener('input', () => {
+                filtrarLibros();
             });
         }
 
         // Filtrado por género
-        if (this.elementos.filtroGenero) {
-            this.elementos.filtroGenero.addEventListener('change', () => {
-                this.filtrarLibros();
+        if (elementos.filtroGenero) {
+            elementos.filtroGenero.addEventListener('change', () => {
+                filtrarLibros();
             });
         }
 
         // Cerrar modal
         const btnCerrar = document.getElementById('cerrar-modal');
         if (btnCerrar) {
-            btnCerrar.addEventListener('click', () => this.cerrarModal());
+            btnCerrar.addEventListener('click', () => cerrarModal());
         }
 
         // Cerrar modal al hacer click fuera
-        if (this.elementos.modal) {
-            this.elementos.modal.addEventListener('click', (e) => {
-                if (e.target === this.elementos.modal) {
-                    this.cerrarModal();
+        if (elementos.modal) {
+            elementos.modal.addEventListener('click', (e) => {
+                if (e.target === elementos.modal) {
+                    cerrarModal();
                 }
             });
         }
@@ -91,18 +98,18 @@ const ProductosLibreria = {
         // Botones de acción del modal
         document.addEventListener('click', (e) => {
             if (e.target.id === 'btn-prestar') {
-                this.solicitarPrestamo();
+                solicitarPrestamo();
             } else if (e.target.id === 'btn-devolver') {
-                this.registrarDevolucion();
+                registrarDevolucion();
             }
         });
-    },
+    }
 
-    filtrarLibros: function () {
-        const busqueda = this.elementos.buscarInput.value.toLowerCase();
-        const generoFiltro = this.elementos.filtroGenero.value;
+    function filtrarLibros() {
+        const busqueda = elementos.buscarInput.value.toLowerCase();
+        const generoFiltro = elementos.filtroGenero.value;
 
-        const librosFiltrrados = this.librosActuales.filter(libro => {
+        const librosFiltrrados = librosActuales.filter(libro => {
             const coincideBusqueda =
                 libro.titulo.toLowerCase().includes(busqueda) ||
                 libro.autor.toLowerCase().includes(busqueda);
@@ -112,14 +119,14 @@ const ProductosLibreria = {
             return coincideBusqueda && coincideGenero;
         });
 
-        this.renderizarLibros(librosFiltrrados);
-    },
+        renderizarLibros(librosFiltrrados);
+    }
 
-    renderizarLibros: function (libros) {
+    function renderizarLibros(libros) {
         console.log('Renderizando libros:', libros.length);
 
         if (libros.length === 0) {
-            this.elementos.container.innerHTML = `
+            elementos.container.innerHTML = `
                 <div class="sin-resultados">
                     <p>No se encontraron libros</p>
                 </div>
@@ -127,24 +134,24 @@ const ProductosLibreria = {
             return;
         }
 
-        const html = libros.map(libro => this.crearTarjetaLibro(libro)).join('');
+        const html = libros.map(libro => crearTarjetaLibro(libro)).join('');
         console.log('HTML generado, longitud:', html.length);
 
-        this.elementos.container.innerHTML = html;
+        elementos.container.innerHTML = html;
 
         // Agregar event listeners a las tarjetas
         document.querySelectorAll('.tarjeta-libro').forEach(tarjeta => {
             tarjeta.addEventListener('click', (e) => {
                 if (e.target.classList.contains('btn-accion')) return;
                 const libroId = parseInt(tarjeta.dataset.id);
-                this.abrirModal(libroId);
+                abrirModal(libroId);
             });
         });
 
         console.log('Tarjetas renderizadas:', libros.length);
-    },
+    }
 
-    crearTarjetaLibro: function (libro) {
+    function crearTarjetaLibro(libro) {
         const claseBadge = libro.disponible ? 'badge-disponible' : 'badge-prestado';
         const textoDisponibilidad = libro.disponible ? 'Disponible' : 'Prestado';
 
@@ -164,13 +171,13 @@ const ProductosLibreria = {
                 </div>
             </div>
         `;
-    },
+    }
 
-    abrirModal: function (libroId) {
+    function abrirModal(libroId) {
         const libro = window.Biblioteca.libros.find(l => l.id === libroId);
         if (!libro) return;
 
-        this.libroSeleccionado = libro;
+        libroSeleccionado = libro;
 
         // Llenar el modal con la información del libro
         document.getElementById('modal-imagen').src = libro.portada;
@@ -196,47 +203,47 @@ const ProductosLibreria = {
         }
 
         // Mostrar el modal
-        this.elementos.modal.classList.add('activo');
-    },
+        elementos.modal.classList.add('activo');
+    }
 
-    cerrarModal: function () {
-        this.elementos.modal.classList.remove('activo');
-        this.libroSeleccionado = null;
-    },
+    function cerrarModal() {
+        elementos.modal.classList.remove('activo');
+        libroSeleccionado = null;
+    }
 
-    solicitarPrestamo: function () {
-        if (!this.libroSeleccionado) return;
+    function solicitarPrestamo() {
+        if (!libroSeleccionado) return;
 
-        const libro = window.Biblioteca.toggleDisponibilidad(this.libroSeleccionado.id);
+        const libro = window.Biblioteca.toggleDisponibilidad(libroSeleccionado.id);
 
         if (libro) {
-            this.mostrarNotificacion('Préstamo solicitado exitosamente', 'success');
+            mostrarNotificacion('Préstamo solicitado exitosamente', 'success');
 
             // Actualizar el modal
             setTimeout(() => {
-                this.abrirModal(libro.id);
-                this.cargarLibros(); // Recargar la lista
+                abrirModal(libro.id);
+                cargarLibros(); // Recargar la lista
             }, 500);
         }
-    },
+    }
 
-    registrarDevolucion: function () {
-        if (!this.libroSeleccionado) return;
+    function registrarDevolucion() {
+        if (!libroSeleccionado) return;
 
-        const libro = window.Biblioteca.toggleDisponibilidad(this.libroSeleccionado.id);
+        const libro = window.Biblioteca.toggleDisponibilidad(libroSeleccionado.id);
 
         if (libro) {
-            this.mostrarNotificacion('Devolución registrada exitosamente', 'success');
+            mostrarNotificacion('Devolución registrada exitosamente', 'success');
 
             // Actualizar el modal
             setTimeout(() => {
-                this.abrirModal(libro.id);
-                this.cargarLibros(); // Recargar la lista
+                abrirModal(libro.id);
+                cargarLibros(); // Recargar la lista
             }, 500);
         }
-    },
+    }
 
-    mostrarNotificacion: function (mensaje, tipo) {
+    function mostrarNotificacion(mensaje, tipo) {
         // Si existe NotificationService, usarlo
         if (window.NotificationService) {
             window.NotificationService.mostrarNotificacion(mensaje, tipo);
@@ -244,22 +251,18 @@ const ProductosLibreria = {
             // Fallback: mostrar alerta simple
             alert(mensaje);
         }
-    },
+    }
 
-    mostrarError: function () {
-        this.elementos.container.innerHTML = `
+    function mostrarError() {
+        elementos.container.innerHTML = `
             <div class="alert alert-danger" role="alert">
                 Error al cargar los libros. Por favor, intenta más tarde.
             </div>
         `;
     }
-};
 
-// Inicializar cuando el DOM esté listo
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        ProductosLibreria.init();
-    });
-} else {
-    ProductosLibreria.init();
-}
+    // API pública
+    return {
+        init: init
+    };
+})();
