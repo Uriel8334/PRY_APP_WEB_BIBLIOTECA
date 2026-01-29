@@ -14,7 +14,7 @@
 }
 
 nav.page-navigation {
-    margin-top: 80px;
+    margin-top: 80px ;
     min-height: 100vh;
     position: fixed;
     top: 0;
@@ -100,13 +100,11 @@ nav.page-navigation li {
     width: 360px;
 }
 
+/* Si cambio los valores toman animaciones diferentes */
 .bg-started nav.page-navigation {
     transform: translate(0, 0);
 }
 
-.bg-started nav.page-navigation {
-    transform: translate(2px, 0);
-}
 
 .main-content {
     margin-left: 60px;
@@ -181,7 +179,6 @@ nav.page-navigation li {
 }
 
 .search-form input:focus {
-
     box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
 }
 
@@ -268,8 +265,8 @@ nav.page-navigation li {
     .search-form {
         position: absolute;
         top: 0px;
-        left: 200px;
-        max-width: 40% !important;
+        left: 250px;
+        max-width: 45% !important;
         margin-top: 22px;
         background: white;
         z-index: 100;
@@ -355,11 +352,10 @@ nav.page-navigation li {
     .search-form {
         position: absolute;
         top: auto;
-        bottom: 60px;
+        bottom: -60px;
         /* Arriba de la barra */
         border-radius: 5px;
-        left: 10px;
-        right: 10px;
+        right: 100px;
         padding: 10px;
         background: white;
         box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
@@ -446,11 +442,10 @@ nav.page-navigation li {
     .search-form {
         position: absolute;
         top: auto;
-        bottom: 60px;
+        bottom: -60px;
         /* Arriba de la barra */
         border-radius: 5px;
-        left: 10px;
-        right: 10px;
+        right: 100px;
         padding: 10px;
         background: white;
         box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
@@ -535,11 +530,10 @@ nav.page-navigation li {
     .search-form {
         position: absolute;
         top: auto;
-        bottom: 60px;
+        bottom: -60px;
         /* Arriba de la barra */
         border-radius: 5px;
-        left: 10px;
-        right: 10px;
+        right: 100px;
         padding: 10px;
         background: white;
         box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
