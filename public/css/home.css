@@ -8,6 +8,7 @@
     --color-overlay: 33, 37, 41;
 }
 
+/* Estilos para home standalone */
 .home-container {
     position: relative;
     width: 100%;
@@ -16,6 +17,19 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+}
+
+/* Estilos para home dinámico en main-content */
+.main-content .home-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .home-video-background {
