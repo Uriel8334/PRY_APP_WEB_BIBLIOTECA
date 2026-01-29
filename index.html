@@ -1,107 +1,198 @@
 <!doctype html>
 <html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./public/css/style.css" />
+		<link
+			rel="icon"
+			href="https://cdn-icons-png.flaticon.com/512/29/29302.png"
+			type="image/png"
+		/>
+		<link
+			rel="stylesheet"
+			href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+		/>
+		<title>Biblioteca Digital</title>
+	</head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="./public/css/style.css" />
-	<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/29/29302.png" type="image/png" />
-	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
-	<title>Biblioteca Digital</title>
-</head>
-
-<body class="bg-dark">
-	<header>
-		<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-			<symbol id="cart" viewBox="0 0 16 16">
-				<path
-					d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z">
-				</path>
-			</symbol>
-			<symbol id="notificaciones" viewBox="0 0 16 16">
-				<path
-					d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
-			</symbol>
-			<symbol id="Home" viewBox="0 0 16 16">
-				<path
-					d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
-			</symbol>
-			<symbol id="speedometer2" viewBox="0 0 16 16">
-				<path
-					d="M8 4a.5.5 0 0 1 .5.5v4.793l2.146 2.147a.5.5 0 0 1-.708.708l-2.147-2.147A.5.5 0 0 1 7.5 9.5V4.5A.5.5 0 0 1 8 4z" />
-				<path
-					d="M3.732 12.683A7 7 0 1 1 12.683 3.73a7 7 0 0 1-8.95 8.95zm1.518-1.518a6 6 0 1 0 8.95-8.95 6 6 0 0 0-8.95 8.95z" />
-			</symbol>
-			<symbol id="table" viewBox="0 0 16 16">
-				<path
-					d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm1 0v3h14V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1zm14 4H1v7h14V6zm0 8H1v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1z" />
-			</symbol>
-			<symbol id="grid" viewBox="0 0 16 16">
-				<path
-					d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm0 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8-8A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 .5v-3zm0 8A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0-1-1.5h-3a1.5,01,50,01-01-50v-3z" />
-			</symbol>
-			<symbol id="people" viewBox="0 0 16 16">
-				<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-			</symbol>
-			<symbol id="cerrar_seccion" viewBox="0 0 16 16">
-				<path
-					d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-			</symbol>
-			<symbol id="book" viewBox="0 0 16 16">
-				<path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z" />
-				<path
-					d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
-				<path
-					d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
-			</symbol>
-			<symbol id="search" viewBox="0 0 16 16">
-				<path
-					d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-			</symbol>
-			<symbol id="menu" viewBox="0 0 16 16">
-				<line x1="3" y1="12" x2="21" y2="12"></line>
-				<line x1="3" y1="6" x2="21" y2="6"></line>
-				<line x1="3" y1="18" x2="21" y2="18"></line>
-			</symbol>
-		</svg>
-	</header>
-	<nav class="page-navigation">
-		<div class="d-flex flex-column flex-shrink-0 bg-body-tertiary" id="bookshop">
-			<!-- <a href="#bookshop" class="d-block p-3 link-body-emphasis text-decoration-none" data-bs-toggle="tooltip"
+	<body class="bg-dark">
+		<header>
+			<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+				<symbol id="cart" viewBox="0 0 16 16">
+					<path
+						d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+					></path>
+				</symbol>
+				<symbol id="notificaciones" viewBox="0 0 16 16">
+					<path
+						d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"
+					/>
+				</symbol>
+				<symbol id="Home" viewBox="0 0 16 16">
+					<path
+						d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
+					/>
+				</symbol>
+				<symbol id="speedometer2" viewBox="0 0 16 16">
+					<path
+						d="M8 4a.5.5 0 0 1 .5.5v4.793l2.146 2.147a.5.5 0 0 1-.708.708l-2.147-2.147A.5.5 0 0 1 7.5 9.5V4.5A.5.5 0 0 1 8 4z"
+					/>
+					<path
+						d="M3.732 12.683A7 7 0 1 1 12.683 3.73a7 7 0 0 1-8.95 8.95zm1.518-1.518a6 6 0 1 0 8.95-8.95 6 6 0 0 0-8.95 8.95z"
+					/>
+				</symbol>
+				<symbol id="table" viewBox="0 0 16 16">
+					<path
+						d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm1 0v3h14V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1zm14 4H1v7h14V6zm0 8H1v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1z"
+					/>
+				</symbol>
+				<symbol id="grid" viewBox="0 0 16 16">
+					<path
+						d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm0 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8-8A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 .5v-3zm0 8A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0-1-1.5h-3a1.5,01,50,01-01-50v-3z"
+					/>
+				</symbol>
+				<symbol id="people" viewBox="0 0 16 16">
+					<path
+						d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+					/>
+				</symbol>
+				<symbol id="cerrar_seccion" viewBox="0 0 16 16">
+					<path
+						d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+					/>
+				</symbol>
+				<symbol id="book" viewBox="0 0 16 16">
+					<path
+						fill-rule="evenodd"
+						d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z"
+					/>
+					<path
+						d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"
+					/>
+					<path
+						d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"
+					/>
+				</symbol>
+				<symbol id="search" viewBox="0 0 16 16">
+					<path
+						d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+					/>
+				</symbol>
+				<symbol id="menu" viewBox="0 0 16 16">
+					<line x1="3" y1="12" x2="21" y2="12"></line>
+					<line x1="3" y1="6" x2="21" y2="6"></line>
+					<line x1="3" y1="18" x2="21" y2="18"></line>
+				</symbol>
+			</svg>
+		</header>
+		<nav class="page-navigation">
+			<div
+				class="d-flex flex-column flex-shrink-0 bg-body-tertiary"
+				id="bookshop"
+			>
+				<!-- <a href="#bookshop" class="d-block p-3 link-body-emphasis text-decoration-none" data-bs-toggle="tooltip"
 				data-bs-placement="right" data-bs-original-title="Libreria Lascanito"> <svg class="mainIcons bi pe-none"
 					aria-hidden="true">
 					<use xlink:href="#Home"></use>
 				</svg> <span class="visually-hidden">Icon-only</span>
 			</a> -->
-			<ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-
-				<li class="nav-item"> <a href="#" class="nav-link active py-3 border-bottom rounded-0"
-						aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Casa"
-						data-bs-original-title="Casa"> <svg class="icons bi pe-none" role="img" aria-label="cart">
-							<use xlink:href="#Home"></use>
-						</svg> </a> </li>
-				<li> <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip"
-						data-bs-placement="right" aria-label="Dashboard" data-bs-original-title="Dashboard"> <svg
-							class="icons bi pe-none" role="img" aria-label="Dashboard">
-							<use xlink:href="#speedometer2"></use>
-						</svg> </a> </li>
-				<li> <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip"
-						data-bs-placement="right" aria-label="Orders" data-bs-original-title="Orders"> <svg
-							class="icons bi pe-none" role="img" aria-label="Orders">
-							<use xlink:href="#table"></use>
-						</svg> </a> </li>
-				<li class="nav-item"> <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip"
-						data-bs-placement="right" aria-label="Products" data-bs-original-title="Products"> <svg
-							class="icons bi pe-none" role="img" aria-label="Products">
-							<use xlink:href="#grid"></use>
-						</svg> </a> </li>
-				<li> <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip"
-						data-bs-placement="right" aria-label="Cerrar Sesión" data-bs-original-title="Cerrar Sesión">
-						<svg class="icons bi pe-none" role="img" aria-label="cerrar_seccion">
-							<use xlink:href="#cerrar_seccion"></use>
-						</svg> </a> </li>
-			</ul>
-			<!-- <div class="dropdown border-top"> <a href="#"
+				<ul
+					class="nav nav-pills nav-flush flex-column mb-auto text-center"
+				>
+					<li class="nav-item">
+						<a
+							href="#"
+							class="nav-link active py-3 border-bottom rounded-0"
+							aria-current="page"
+							data-bs-toggle="tooltip"
+							data-bs-placement="right"
+							aria-label="Casa"
+							data-bs-original-title="Casa"
+						>
+							<svg
+								class="icons bi pe-none"
+								role="img"
+								aria-label="cart"
+							>
+								<use xlink:href="#Home"></use>
+							</svg>
+						</a>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="nav-link py-3 border-bottom rounded-0"
+							data-bs-toggle="tooltip"
+							data-bs-placement="right"
+							aria-label="Dashboard"
+							data-bs-original-title="Dashboard"
+						>
+							<svg
+								class="icons bi pe-none"
+								role="img"
+								aria-label="Dashboard"
+							>
+								<use xlink:href="#speedometer2"></use>
+							</svg>
+						</a>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="nav-link py-3 border-bottom rounded-0"
+							data-bs-toggle="tooltip"
+							data-bs-placement="right"
+							aria-label="Orders"
+							data-bs-original-title="Orders"
+						>
+							<svg
+								class="icons bi pe-none"
+								role="img"
+								aria-label="Orders"
+							>
+								<use xlink:href="#table"></use>
+							</svg>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a
+							href="#"
+							class="nav-link py-3 border-bottom rounded-0"
+							data-bs-toggle="tooltip"
+							data-bs-placement="right"
+							aria-label="Products"
+							data-bs-original-title="Products"
+						>
+							<svg
+								class="icons bi pe-none"
+								role="img"
+								aria-label="Products"
+							>
+								<use xlink:href="#grid"></use>
+							</svg>
+						</a>
+					</li>
+					<li>
+						<a
+							href="#"
+							class="nav-link py-3 border-bottom rounded-0"
+							data-bs-toggle="tooltip"
+							data-bs-placement="right"
+							aria-label="Cerrar Sesión"
+							data-bs-original-title="Cerrar Sesión"
+						>
+							<svg
+								class="icons bi pe-none"
+								role="img"
+								aria-label="cerrar_seccion"
+							>
+								<use xlink:href="#cerrar_seccion"></use>
+							</svg>
+						</a>
+					</li>
+				</ul>
+				<!-- <div class="dropdown border-top"> <a href="#"
 					class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle"
 					data-bs-toggle="dropdown" aria-expanded="false"> <img
 						src="https://cdn-icons-png.flaticon.com/512/29/29302.png" alt="mdo"
@@ -116,51 +207,79 @@
 					<li><a class="dropdown-item" href="#">Sign out</a></li>
 				</ul>
 			</div> -->
-		</div>
-	</nav>
-	<nav class="navbar navbar-expand navbar-light bg-white topbar shadow-sm fixed-top" id="nav_start">
-		<div class="container-fluid">
-			<!-- Hamburger Button -->
-			<button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggle" type="button">
-				<svg class="icons icon-menu">
-					<use xlink:href="#menu"></use>
-				</svg>
-			</button>
+			</div>
+		</nav>
+		<nav
+			class="navbar navbar-expand navbar-light bg-white topbar shadow-sm fixed-top"
+			id="nav_start"
+		>
+			<div class="container-fluid">
+				<!-- Hamburger Button -->
+				<button
+					class="btn btn-link d-md-none rounded-circle me-3"
+					id="sidebarToggle"
+					type="button"
+				>
+					<svg class="icons icon-menu">
+						<use xlink:href="#menu"></use>
+					</svg>
+				</button>
 
-			<!-- Brand -->
-			<a class="navbar-brand fw-bold" href="#">
-				<svg class="icons me-2">
-					<use xlink:href="#book"></use>
-				</svg> Biblioteca Virginia
-			</a>
+				<!-- Brand -->
+				<a class="navbar-brand fw-bold" href="#">
+					<svg class="icons me-2">
+						<use xlink:href="#book"></use>
+					</svg>
+					Biblioteca Virginia
+				</a>
 
-			<!-- Search Bar -->
-			<form class="search-form d-md-none d-md-flex ms-auto me-3 w-50 d-none" id="searchForm">
-				<div class="input-group">
-					<input class="form-control border-0 bg-light" type="search" placeholder="Buscar" aria-label="Buscar"
-						id="searchInput">
-					<span class="input-group-text bg-light border-0" id="closeSearch">
-						<svg class="icons text-muted">
-							<use xlink:href="#search">
-							</use>
-						</svg>
-					</span>
-				</div>
-			</form>
+				<!-- Search Bar -->
+				<form
+					class="search-form d-md-none d-md-flex ms-auto me-3 w-50 d-none"
+					id="searchForm"
+				>
+					<div class="input-group">
+						<input
+							class="form-control border-0 bg-light"
+							type="search"
+							placeholder="Buscar"
+							aria-label="Buscar"
+							id="searchInput"
+						/>
+						<span
+							class="input-group-text bg-light border-0"
+							id="closeSearch"
+						>
+							<svg class="icons text-muted">
+								<use xlink:href="#search"></use>
+							</svg>
+						</span>
+					</div>
+				</form>
 
-			<!-- Right Side Icons -->
-			<ul class="navbar-nav ms-auto d-flex flex-row align-items-center">
-				<!-- Search Icon (mobile) -->
-				<li class="nav-item dropdown me-3 d-md-show">
-					<a class="nav-link position-relative" href="#" role="button" id="searchToggle" aria-label="Search"
-						data-bs-toggle="dropdown" data-bs-placement="bottom" data-bs-original-title="Buscar">
-						<svg class="icons">
-							<use xlink:href="#search"></use>
-						</svg>
-					</a>
-				</li>
-				<!-- Documentation Link -->
-				<!-- <li class="nav-item dropdown d-none d-md-block me-3">
+				<!-- Right Side Icons -->
+				<ul
+					class="navbar-nav ms-auto d-flex flex-row align-items-center"
+				>
+					<!-- Search Icon (mobile) -->
+					<li class="nav-item dropdown me-3 d-md-show">
+						<a
+							class="nav-link position-relative"
+							href="#"
+							role="button"
+							id="searchToggle"
+							aria-label="Search"
+							data-bs-toggle="dropdown"
+							data-bs-placement="bottom"
+							data-bs-original-title="Buscar"
+						>
+							<svg class="icons">
+								<use xlink:href="#search"></use>
+							</svg>
+						</a>
+					</li>
+					<!-- Documentation Link -->
+					<!-- <li class="nav-item dropdown d-none d-md-block me-3">
 					<a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
 						data-bs-placement="bottom" aria-label="Historial" data-bs-original-title="Historial">
 						Historial
@@ -172,30 +291,46 @@
 					</ul>
 				</li> -->
 
-				<!-- Alerts -->
-				<li class="nav-item dropdown me-3">
-					<a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown"
-						data-bs-placement="bottom" aria-label="Notifications" data-bs-original-title="Notificaciones">
-						<svg class="icons">
-							<use xlink:href="#notificaciones"></use>
-						</svg>
-						<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger  "
-							style="font-size: 0.95rem;" id="numero_notificaciones">
-							0
-						</span>
-					</a>
-					<ul class="alertCenter dropdown-menu dropdown-menu-end">
-						<li class="dropdown-header">Centro de Alertas</li>
-						<!-- Linea que divide  -->
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item" onclick="nuevasAlertas()">0</a></li>
-					</ul>
-				</li>
+					<!-- Alerts -->
+					<li class="nav-item dropdown me-3">
+						<a
+							class="nav-link position-relative"
+							href="#"
+							role="button"
+							data-bs-toggle="dropdown"
+							data-bs-placement="bottom"
+							aria-label="Notifications"
+							data-bs-original-title="Notificaciones"
+						>
+							<svg class="icons">
+								<use xlink:href="#notificaciones"></use>
+							</svg>
+							<span
+								class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger  "
+								style="font-size: 0.95rem;"
+								id="numero_notificaciones"
+							>
+								0
+							</span>
+						</a>
+						<ul class="alertCenter dropdown-menu dropdown-menu-end">
+							<li class="dropdown-header">Centro de Alertas</li>
+							<!-- Linea que divide  -->
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									onclick="nuevasAlertas()"
+									>0</a
+								>
+							</li>
+						</ul>
+					</li>
 
-				<!-- Messages -->
-				<!-- <li class="nav-item dropdown me-3">
+					<!-- Messages -->
+					<!-- <li class="nav-item dropdown me-3">
 					<a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown"
 						data-bs-placement="bottom" aria-label="Messages" data-bs-original-title="Mensajes">
 						<svg class="icons">
@@ -215,51 +350,61 @@
 					</ul>
 				</li> -->
 
-				<!-- User Profile -->
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
-						data-bs-toggle="dropdown" data-bs-placement="bottom" aria-label="User Account"
-						data-bs-original-title="Usuario">
-						<img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" class=" icons me-2" alt="User">
-					</a>
-					<ul class="dropdown-menu dropdown-menu-end">
-						<li class="dropdown-header">
-							<div class="fw-bold">Valerie Luna</div>
-							<div class="text-muted small">vluna@aol.com</div>
-						</li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li>
-							<a class="dropdown-item" href="#">
-								<svg class="icons me-2">
-									<use xlink:href="#people"></use>
-								</svg>Account
-							</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="view/login.html">
-								<svg class="icons me-2">
-									<use xlink:href="#cerrar_seccion"></use>
-								</svg>Logout
-							</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
+					<!-- User Profile -->
+					<li class="nav-item dropdown">
+						<a
+							class="nav-link dropdown-toggle d-flex align-items-center"
+							href="#"
+							role="button"
+							data-bs-toggle="dropdown"
+							data-bs-placement="bottom"
+							aria-label="User Account"
+							data-bs-original-title="Usuario"
+						>
+							<img
+								src="https://cdn-icons-png.flaticon.com/512/29/29302.png"
+								class=" icons me-2"
+								alt="User"
+							/>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end">
+							<li class="dropdown-header">
+								<div class="fw-bold">Valerie Luna</div>
+								<div class="text-muted small">
+									vluna@aol.com
+								</div>
+							</li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">
+									<svg class="icons me-2">
+										<use xlink:href="#people"></use></svg
+									>Account
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="view/login.html">
+									<svg class="icons me-2">
+										<use
+											xlink:href="#cerrar_seccion"
+										></use></svg
+									>Logout
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
 
+		<main>
+			<div class="main-content"></div>
+		</main>
 
-	<main>
-		<div class="main-content">
-
-		</div>
-	</main>
-
-
-	<footer></footer>
-	<!-- <script>
+		<footer></footer>
+		<!-- <script>
 		let numberNotifications = document.getElementById('numero_notificaciones');
 		const selectTooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 		const selectDropdown = document.querySelectorAll('[data-bs-toggle="dropdown"]');
@@ -377,158 +522,154 @@
 			}
 		});
 	</script> -->
-	<script>
-		let numberNotifications = document.getElementById('numero_notificaciones');
-		const selectTooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-		const selectDropdown = document.querySelectorAll('[data-bs-toggle="dropdown"]');
-		const menuItems = document.querySelectorAll('nav.page-navigation ul.nav li a.nav-link');
-		const menuItemsBookshop = document.querySelectorAll('nav.navbar div.container-fluid ul.navbar-nav li a.nav-link');
-		const searchToggle = document.getElementById('searchToggle');
-		const searchForm = document.getElementById('searchForm');
-		const searchInput = document.getElementById('searchInput');
-		const closeSearch = document.getElementById('closeSearch');
-		const libros = () => {
-			return
-			{
+		<script>
+			let numberNotifications = document.getElementById('numero_notificaciones');
+			const selectTooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+			const selectDropdown = document.querySelectorAll('[data-bs-toggle="dropdown"]');
+			const menuItems = document.querySelectorAll('nav.page-navigation ul.nav li a.nav-link');
+			const menuItemsBookshop = document.querySelectorAll('nav.navbar div.container-fluid ul.navbar-nav li a.nav-link');
+			const searchToggle = document.getElementById('searchToggle');
+			const searchForm = document.getElementById('searchForm');
+			const searchInput = document.getElementById('searchInput');
+			const closeSearch = document.getElementById('closeSearch');
+			const libros = () => {
+				return
+				{
 
 
-			}
-		}
-
-		function updateModeClass() {
-			document.body.classList.toggle('nav.na', window.innerWidth < 768);
-		}
-
-
-		// Función para activar items (solo si existen)
-		function activityItems(items, tooltips) {
-			if (!items || items.length === 0) return;
-
-			items.forEach(item => {
-				item.addEventListener('click', function () {
-					items.forEach(li => li.classList.remove('active'));
-					this.classList.add('active');
-
-					const anyActive = Array.from(items).some(li => li.classList.contains('active'));
-					actualizarTooltips(anyActive, tooltips);
-				});
-			});
-		}
-
-		// Inicializar tooltips (solo si existen)
-		function activityMenssage(tooltips) {
-			if (!tooltips || tooltips.length === 0) return;
-
-			tooltips.forEach(tooltip => {
-				tooltip.addEventListener('mouseenter', function () {
-					if (!this._tooltipInstance) {
-						this._tooltipInstance = new bootstrap.Tooltip(this);
-					}
-				});
-			});
-		}
-
-		function actualizarTooltips(anyActive, tooltips) {
-			if (!tooltips || tooltips.length === 0) return;
-
-			tooltips.forEach(selection => {
-				if (anyActive) {
-					selection._tooltipInstance?.hide();
-				} else {
-					if (!selection._tooltipInstance) {
-						selection._tooltipInstance = new bootstrap.Tooltip(selection);
-					}
 				}
+			}
+
+			function updateModeClass() {
+				document.body.classList.toggle('nav.na', window.innerWidth < 768);
+			}
+
+
+			// Función para activar items (solo si existen)
+			function activityItems(items, tooltips) {
+				if (!items || items.length === 0) return;
+
+				items.forEach(item => {
+					item.addEventListener('click', function () {
+						items.forEach(li => li.classList.remove('active'));
+						this.classList.add('active');
+
+						const anyActive = Array.from(items).some(li => li.classList.contains('active'));
+						actualizarTooltips(anyActive, tooltips);
+					});
+				});
+			}
+
+			// Inicializar tooltips (solo si existen)
+			function activityMenssage(tooltips) {
+				if (!tooltips || tooltips.length === 0) return;
+
+				tooltips.forEach(tooltip => {
+					tooltip.addEventListener('mouseenter', function () {
+						if (!this._tooltipInstance) {
+							this._tooltipInstance = new bootstrap.Tooltip(this);
+						}
+					});
+				});
+			}
+
+			function actualizarTooltips(anyActive, tooltips) {
+				if (!tooltips || tooltips.length === 0) return;
+
+				tooltips.forEach(selection => {
+					if (anyActive) {
+						selection._tooltipInstance?.hide();
+					} else {
+						if (!selection._tooltipInstance) {
+							selection._tooltipInstance = new bootstrap.Tooltip(selection);
+						}
+					}
+				});
+			}
+
+			function Notifications(notificacion) {
+			}
+
+			// Inicializar solo si los elementos existen
+			activityItems(menuItems, selectTooltips);
+
+			activityItems(menuItemsBookshop, selectDropdown);
+
+			activityMenssage(selectTooltips);
+
+			activityMenssage(selectDropdown);
+
+			// Animación de carga
+			window.addEventListener('load', () => {
+				setTimeout(() => {
+					document.body.classList.add('bg-started')
+					document.getElementById('.nav_start').classList.add('')
+				}, 200);
 			});
-		}
+			if (searchToggle && searchForm) {
+				searchToggle.addEventListener('click', function (e) {
+					e.preventDefault();
 
-		function Notifications(notificacion) {
-		}
+					if (searchForm.classList.contains('d-none')) {
+						// Mostrar
+						searchForm.classList.remove('d-none', 'hide');
+						searchForm.classList.add('show');
+						searchToggle.classList.add('d-none');
+						setTimeout(() => searchInput?.focus(), 400);
+					} else {
+						// Ocultar
+						searchForm.classList.remove('show');
+						searchForm.classList.add('hide');
+						searchToggle.classList.remove('d-none');
+						setTimeout(() => {
+							searchForm.classList.add('d-none');
+							searchForm.classList.remove('hide');
+						}, 300);
+					}
+				});
+			}
 
-		// Inicializar solo si los elementos existen
-		activityItems(menuItems, selectTooltips);
+			// Cerrar búsqueda con el ícono X
+			if (closeSearch && searchForm) {
+				closeSearch.addEventListener('click', function () {
+					searchForm.classList.remove('show');
+					searchForm.classList.add('hide');
 
-		activityItems(menuItemsBookshop, selectDropdown);
+					if (searchToggle) {
+						searchToggle.classList.remove('d-none');
+					}
 
-		activityMenssage(selectTooltips);
+					setTimeout(() => {
+						searchForm.classList.add('d-none');
+						searchForm.classList.remove('hide');
+					}, 300);
+				});
+			}
 
-		activityMenssage(selectDropdown);
+			// Cerrar al hacer clic fuera
+			document.addEventListener('click', function (e) {
+				if (searchForm && searchToggle &&
+					!searchForm.contains(e.target) &&
+					!searchToggle.contains(e.target) &&
+					!searchForm.classList.contains('d-none')) {
 
-		// Animación de carga
-		window.addEventListener('load', () => {
-			setTimeout(() => {
-				document.body.classList.add('bg-started')
-				document.getElementById('.nav_start').classList.add('')
-			}, 200);
-		});
-		if (searchToggle && searchForm) {
-			searchToggle.addEventListener('click', function (e) {
-				e.preventDefault();
-
-				if (searchForm.classList.contains('d-none')) {
-					// Mostrar
-					searchForm.classList.remove('d-none', 'hide');
-					searchForm.classList.add('show');
-					searchToggle.classList.add('d-none');
-					setTimeout(() => searchInput?.focus(), 400);
-				} else {
-					// Ocultar
 					searchForm.classList.remove('show');
 					searchForm.classList.add('hide');
 					searchToggle.classList.remove('d-none');
+
 					setTimeout(() => {
 						searchForm.classList.add('d-none');
 						searchForm.classList.remove('hide');
 					}, 300);
 				}
 			});
-		}
+		</script>
 
-		// Cerrar búsqueda con el ícono X
-		if (closeSearch && searchForm) {
-			closeSearch.addEventListener('click', function () {
-				searchForm.classList.remove('show');
-				searchForm.classList.add('hide');
-
-				if (searchToggle) {
-					searchToggle.classList.remove('d-none');
-				}
-
-				setTimeout(() => {
-					searchForm.classList.add('d-none');
-					searchForm.classList.remove('hide');
-				}, 300);
-			});
-		}
-
-		// Cerrar al hacer clic fuera
-		document.addEventListener('click', function (e) {
-			if (searchForm && searchToggle &&
-				!searchForm.contains(e.target) &&
-				!searchToggle.contains(e.target) &&
-				!searchForm.classList.contains('d-none')) {
-
-				searchForm.classList.remove('show');
-				searchForm.classList.add('hide');
-				searchToggle.classList.remove('d-none');
-
-				setTimeout(() => {
-					searchForm.classList.add('d-none');
-					searchForm.classList.remove('hide');
-				}, 300);
-			}
-		});
-
-	</script>
-
-
-	<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="./public/js/LibraryData.js"></script>
-	<script src="./public/js/prueba.js"></script>
-</body>
-
+		<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="./public/js/LibraryData.js"></script>
+		<script src="./public/js/prueba.js"></script>
+	</body>
 </html>
-
 
 <!-- // ...existing code...
 <script>
