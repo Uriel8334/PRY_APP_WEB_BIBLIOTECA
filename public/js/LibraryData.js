@@ -10,7 +10,7 @@ class Libro {
         this.autor = autor;
         this.genero = genero;
         // Si no hay portada, usamos una genérica
-        this.portada = portada || 'https://via.placeholder.com/150?text=Sin+Portada';// URL de imagen
+        this.portada = portada || 'https://via.placeholder.com/300x450/cccccc/000000?text=Sin+Portada';
         this.disponible = true;
         this.fechaPrestamo = null;
     }
@@ -30,12 +30,12 @@ const Biblioteca = {
         if (datosGuardados) {
             // Si existen datos, los convertimos de Texto a Objetos reales
             this.libros = JSON.parse(datosGuardados);
-            console.log("💾 Datos cargados desde LocalStorage");
+            console.log("Datos cargados desde LocalStorage");
         } else {
             // Si es la primera vez que entran, cargamos datos de prueba
             this.cargarDatosPrueba();
             this.guardarDatos(); // Guardamos estos datos iniciales
-            console.log("🆕 Carga inicial con datos por defecto");
+            console.log("Carga inicial con datos por defecto");
         }
     },
 
