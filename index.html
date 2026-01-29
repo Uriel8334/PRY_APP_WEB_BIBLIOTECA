@@ -159,23 +159,11 @@
 						</svg>
 					</a>
 				</li>
-				<!-- Documentation Link -->
-				<!-- <li class="nav-item dropdown d-none d-md-block me-3">
-					<a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-						data-bs-placement="bottom" aria-label="Historial" data-bs-original-title="Historial">
-						Historial
-					</a>
-					<ul class="dropdown-menu dropdown-menu-end">
-						<li><a class="dropdown-item" href="#">Documentation</a></li>
-						<li><a class="dropdown-item" href="#">Tutorial</a></li>
-						<li><a class="dropdown-item" href="#">Changelog</a></li>
-					</ul>
-				</li> -->
 
 				<!-- Alerts -->
 				<li class="nav-item dropdown me-3">
 					<a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown"
-						data-bs-placement="bottom" aria-label="Notifications" data-bs-original-title="Notificaciones">
+						data-bs-placement="bottom" aria-label="Notifications" data-bs-original-title="Notificaciones" id="alertsIcon">
 						<svg class="icons">
 							<use xlink:href="#notificaciones"></use>
 						</svg>
@@ -184,7 +172,7 @@
 							0
 						</span>
 					</a>
-					<ul class="alertCenter dropdown-menu dropdown-menu-end">
+					<ul class="alertCenter dropdown-menu dropdown-menu-end" id="alertsMenu">
 						<li class="dropdown-header">Centro de Alertas</li>
 						<!-- Linea que divide  -->
 						<li>
@@ -194,38 +182,17 @@
 					</ul>
 				</li>
 
-				<!-- Messages -->
-				<!-- <li class="nav-item dropdown me-3">
-					<a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown"
-						data-bs-placement="bottom" aria-label="Messages" data-bs-original-title="Mensajes">
-						<svg class="icons">
-							<use xlink:href="#mail"></use>
-						</svg>
-						<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
-							style="font-size: 0.95rem;" id="numero_mensajes">
-							0
-						</span>
-					</a>
-					<ul class="alertCenter dropdown-menu dropdown-menu-end">
-						<li class="dropdown-header">Centro de Mensajes</li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item" href="#">New message</a></li>
-					</ul>
-				</li> -->
-
 				<!-- User Profile -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
 						data-bs-toggle="dropdown" data-bs-placement="bottom" aria-label="User Account"
-						data-bs-original-title="Usuario">
+						data-bs-original-title="Usuario" id="userProfile1">
 						<img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" class=" icons me-2" alt="User">
 					</a>
-					<ul class="dropdown-menu dropdown-menu-end">
+					<ul class="dropdown-menu dropdown-menu-end" id="userProfile">
 						<li class="dropdown-header">
-							<div class="fw-bold">Valerie Luna</div>
-							<div class="text-muted small">vluna@aol.com</div>
+							<div class="fw-bold" id="entradaNombreCompleto"></div>
+							<div class="text-muted small" id="entradaEmail"></div>
 						</li>
 						<li>
 							<hr class="dropdown-divider">
@@ -241,7 +208,7 @@
 							<a class="dropdown-item" href="view/login.html">
 								<svg class="icons me-2">
 									<use xlink:href="#cerrar_seccion"></use>
-								</svg>Logout
+								</svg> Salir
 							</a>
 						</li>
 					</ul>
@@ -249,211 +216,19 @@
 			</ul>
 		</div>
 	</nav>
-
-
 	<main>
 		<div class="main-content">
-
 		</div>
 	</main>
 
 
 	<footer></footer>
-	<!-- <script>
-		let numberNotifications = document.getElementById('numero_notificaciones');
-		const selectTooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-		const selectDropdown = document.querySelectorAll('[data-bs-toggle="dropdown"]');
-		var menuItems = document.querySelectorAll('nav.page-navigation ul.nav li a.nav-link');
-		var menuItemsBookshop = document.querySelectorAll('nav.navbar div.container-fluid ul.navbar-nav li a.nav-link');
-		const searchToggle = document.getElementById('searchToggle');
-		const searchForm = document.getElementById('searchForm');
-		const searchInput = document.getElementById('searchInput');
-		const closeSearch = document.getElementById('closeSearch');
-		let activityItems = (menuItems, selectTooltips) => {
-			const anyActive = Array.from(menuItems).some(li => li.classList.contains('active'));
-			return menuItems.forEach(item => {
-				item.addEventListener('click', function () {
-					menuItems.forEach(li => li.classList.remove('active'));
-					this.classList.add('active');
-					actualizarTooltips(anyActive, selectTooltips);
-				});
-			});
-		};
 
-		activityItems(menuItems, selectTooltips);
-		activityItems(menuItemsBookshop, selectDropdown);
-
-		let activityMenssage = (selectTooltips) => {
-			document.addEventListener('mouseenter', function () {
-				selectTooltips.forEach(selectTooltips => {
-					if (!selectTooltips._tooltipInstance) {
-						selectTooltips._tooltipInstance = new bootstrap.Tooltip(selectTooltips);
-					}
-				});
-			});
-		};
-
-		activityMenssage(selectTooltips);
-		activityMenssage(selectDropdown);
-
-
-		function actualizarTooltips(anyActive, selectTooltips) {
-			selectTooltips.forEach(selection => {
-				if (anyActive) {
-					selection._tooltipInstance?.hide();
-				} else {
-					if (!selection._tooltipInstance) {
-						selection._tooltipInstance = new bootstrap.Tooltip(selection);
-					}
-				}
-			});
-		}
-
-		window.addEventListener('load', () => {
-			setTimeout(() => document.body.classList.add('bg-started'), 0.2);
-		});
-		function seleccionarElemento(elemento) {
-			elemento.addEventListener("click",function() {
-				menuItems.forEach(function(item) {
-					item.classList.remove("show");
-				});
-				elemento.classList.add("show");
-			});
-		}
-		seleccionarElemento(menuItems[0]);
-
-		if (searchToggle) {
-			searchToggle.addEventListener('click', function (e) {
-				e.preventDefault();
-				// Mostrar
-				if (searchForm.classList.contains('d-none')) {
-					searchForm.classList.remove('d-none', 'hide');
-					searchForm.classList.add('show');
-					searchToggle.classList.add('d-none', 'hide');
-					searchToggle.classList.remove('show');
-					setTimeout(() => {
-						searchInput.focus();
-					}, 400);
-				} else {
-					// Ocultar
-					searchForm.classList.remove('show');
-					searchForm.classList.add('hide');
-					searchToggle.classList.remove('d-none', 'hide');
-					searchToggle.classList.add('show');
-					setTimeout(() => {
-						searchForm.classList.add('d-none');
-						searchForm.classList.remove('hide');
-					}, 300);
-				}
-			});
-		}
-		// Cerrar al hacer clic en el ícono dentro del input
-		if (closeSearch) {
-			closeSearch.addEventListener('click', function () {
-				if (window.innerWidth <= 768 || window.innerWidth <= 991.98) {
-					searchForm.classList.remove('show');
-					searchForm.classList.add('hide');
-					searchToggle.classList.remove('d-none', 'hide');
-					searchToggle.classList.add('show');
-					setTimeout(() => {
-						searchForm.classList.add('d-none');
-						searchForm.classList.remove('hide');
-					}, 300);
-				}
-			});
-		}
-
-		// Cerrar al hacer clic fuera
-		document.addEventListener('click', function (e) {
-			if (searchForm && !searchForm.contains(e.target) && searchToggle && !searchToggle.contains(e.target) && !searchForm.classList.contains('d-none')) {
-				searchForm.classList.remove('show');
-				searchForm.classList.add('hide');
-				setTimeout(() => {
-					searchForm.classList.add('d-none');
-					searchForm.classList.remove('hide');
-					searchToggle.classList.remove('d-none', 'hide');
-					searchToggle.classList.add('show');
-				}, 300);
-			}
-		});
-	</script> -->
+	<script src="./public/js/main.js"></script>
+	<!-- <script src="./public/js/validarEntradaDatos.js"></script> -->
+	<script src="./public/js/storage.js"></script>
+	<script src="./public/js/prueba.js"></script>
 	<script>
-		let numberNotifications = document.getElementById('numero_notificaciones');
-		const selectTooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-		const selectDropdown = document.querySelectorAll('[data-bs-toggle="dropdown"]');
-		const menuItems = document.querySelectorAll('nav.page-navigation ul.nav li a.nav-link');
-		const menuItemsBookshop = document.querySelectorAll('nav.navbar div.container-fluid ul.navbar-nav li a.nav-link');
-		const searchToggle = document.getElementById('searchToggle');
-		const searchForm = document.getElementById('searchForm');
-		const searchInput = document.getElementById('searchInput');
-		const closeSearch = document.getElementById('closeSearch');
-		const libros = () => {
-			return
-			{
-
-
-			}
-		}
-
-		function updateModeClass() {
-			document.body.classList.toggle('nav.na', window.innerWidth < 768);
-		}
-
-
-		// Función para activar items (solo si existen)
-		function activityItems(items, tooltips) {
-			if (!items || items.length === 0) return;
-
-			items.forEach(item => {
-				item.addEventListener('click', function () {
-					items.forEach(li => li.classList.remove('active'));
-					this.classList.add('active');
-
-					const anyActive = Array.from(items).some(li => li.classList.contains('active'));
-					actualizarTooltips(anyActive, tooltips);
-				});
-			});
-		}
-
-		// Inicializar tooltips (solo si existen)
-		function activityMenssage(tooltips) {
-			if (!tooltips || tooltips.length === 0) return;
-
-			tooltips.forEach(tooltip => {
-				tooltip.addEventListener('mouseenter', function () {
-					if (!this._tooltipInstance) {
-						this._tooltipInstance = new bootstrap.Tooltip(this);
-					}
-				});
-			});
-		}
-
-		function actualizarTooltips(anyActive, tooltips) {
-			if (!tooltips || tooltips.length === 0) return;
-
-			tooltips.forEach(selection => {
-				if (anyActive) {
-					selection._tooltipInstance?.hide();
-				} else {
-					if (!selection._tooltipInstance) {
-						selection._tooltipInstance = new bootstrap.Tooltip(selection);
-					}
-				}
-			});
-		}
-
-		function Notifications(notificacion) {
-		}
-
-		// Inicializar solo si los elementos existen
-		activityItems(menuItems, selectTooltips);
-
-		activityItems(menuItemsBookshop, selectDropdown);
-
-		activityMenssage(selectTooltips);
-
-		activityMenssage(selectDropdown);
-
 		// Animación de carga
 		window.addEventListener('load', () => {
 			setTimeout(() => {
@@ -461,67 +236,8 @@
 				document.getElementById('.nav_start').classList.add('')
 			}, 200);
 		});
-		if (searchToggle && searchForm) {
-			searchToggle.addEventListener('click', function (e) {
-				e.preventDefault();
-
-				if (searchForm.classList.contains('d-none')) {
-					// Mostrar
-					searchForm.classList.remove('d-none', 'hide');
-					searchForm.classList.add('show');
-					searchToggle.classList.add('d-none');
-					setTimeout(() => searchInput?.focus(), 400);
-				} else {
-					// Ocultar
-					searchForm.classList.remove('show');
-					searchForm.classList.add('hide');
-					searchToggle.classList.remove('d-none');
-					setTimeout(() => {
-						searchForm.classList.add('d-none');
-						searchForm.classList.remove('hide');
-					}, 300);
-				}
-			});
-		}
-
-		// Cerrar búsqueda con el ícono X
-		if (closeSearch && searchForm) {
-			closeSearch.addEventListener('click', function () {
-				searchForm.classList.remove('show');
-				searchForm.classList.add('hide');
-
-				if (searchToggle) {
-					searchToggle.classList.remove('d-none');
-				}
-
-				setTimeout(() => {
-					searchForm.classList.add('d-none');
-					searchForm.classList.remove('hide');
-				}, 300);
-			});
-		}
-
-		// Cerrar al hacer clic fuera
-		document.addEventListener('click', function (e) {
-			if (searchForm && searchToggle &&
-				!searchForm.contains(e.target) &&
-				!searchToggle.contains(e.target) &&
-				!searchForm.classList.contains('d-none')) {
-
-				searchForm.classList.remove('show');
-				searchForm.classList.add('hide');
-				searchToggle.classList.remove('d-none');
-
-				setTimeout(() => {
-					searchForm.classList.add('d-none');
-					searchForm.classList.remove('hide');
-				}, 300);
-			}
-		});
 
 	</script>
-
-
 	<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="./public/js/LibraryData.js"></script>
 	<script src="./public/js/prueba.js"></script>

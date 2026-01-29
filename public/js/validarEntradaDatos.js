@@ -1,15 +1,15 @@
 function mensajeError(mensaje, elementoId) {
     elementoId.classList.add('is-invalid');
-    var feedback = elementoId.parentNode.querySelector('.invalid-feedback');
+    var feedback = elementoId.parentNode.querySelector('.invalid-tooltip');
     if (feedback) {
-        feedback.innerHTML = '<small>' + mensaje + '</small>';
+        feedback.innerHTML =  mensaje;
     }
 }
 
 function limpiarError(elemento) {
     elemento.classList.remove('is-invalid');
     elemento.classList.add('is-valid');
-    var feedback = elemento.parentNode.querySelector('.invalid-feedback');
+    var feedback = elemento.parentNode.querySelector('.invalid-tooltip');
     if (feedback) {
         feedback.textContent = '';
     }
@@ -25,13 +25,40 @@ function validarNombreCompleto(valor, elemento) {
         mensajeError('El nombre completo solo puede contener letras y espacios.', elemento);
         return false;
     } else if (numSpaces < 1) {
-        mensajeError('El nombre completo debe tener al menos un nombre y un apellido.', elemento);
+        mensajeError('En este campo debe tener dos nombres', elemento);
+        return false;
+    } else if (/\s{2,}/.test(valor)) {
+        mensajeError('No puedes usar espacios consecutivos.', elemento);
+        return false;
+    } else if (numSpaces >= 2) {
+        mensajeError('Solo debe tener dos nombres', elemento);
+        return false;
+    } else if (valor.length < 3 || valor.length > 50) {
+        mensajeError('El nombre completo debe tener entre 3 y 50 caracteres.', elemento);
+        return false;
+    } else {
+        limpiarError(elemento);
+        return true;
+    }
+}
+
+function validarApellidoCompleto(valor, elemento) {
+    elemento.classList.remove('is-invalid', 'is-valid');
+    let numSpaces = valor.split(" ").length - 1;
+    if (valor === '') {
+        mensajeError('El apellido completo es obligatorio.', elemento);
+        return false;
+    } else if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(valor)) {
+        mensajeError('El apellido completo solo puede contener letras y espacios.', elemento);
+        return false;
+    } else if (numSpaces < 1) {
+        mensajeError('Debe contener al menos dos apellidos.', elemento);
         return false;
     } else if (/\s{2,}/.test(valor)) {
         mensajeError('No puedes usar espacios consecutivos.', elemento);
         return false;
     } else if (valor.length < 3 || valor.length > 50) {
-        mensajeError('El nombre completo debe tener entre 3 y 50 caracteres.', elemento);
+        mensajeError('El apellido completo debe tener entre 3 y 50 caracteres.', elemento);
         return false;
     } else {
         limpiarError(elemento);
@@ -147,13 +174,14 @@ async function validarDuplicados(correoElectronico, nombreUsuario, usuarios) {
     return val1 && val2;
 }
 
-function validarBotonUsuario(nombreCompleto, correoElectronico, nombreUsuario, contrasena, confirmarContrasena) {
+function validarBotonUsuario(nombreCompleto, apellidoCompleto, correoElectronico, nombreUsuario, contrasena, confirmarContrasena) {
     const val1 = validarNombreCompleto(nombreCompleto.value, nombreCompleto);
-    const val2 = validarCorreoElectronico(correoElectronico.value, correoElectronico);
-    const val3 = validarNombreUsuario(nombreUsuario.value, nombreUsuario);
-    const val4 = validarContraseñaLogin(contrasena.value, contrasena);
-    const val5 = validaEntreContraseñas(confirmarContrasena.value, contrasena.value, confirmarContrasena);
-    return val1 && val2 && val3 && val4 && val5;
+    const val2 = validarApellidoCompleto(apellidoCompleto.value, apellidoCompleto);
+    const val3 = validarCorreoElectronico(correoElectronico.value, correoElectronico);
+    const val4 = validarNombreUsuario(nombreUsuario.value, nombreUsuario);
+    const val5 = validarContraseñaLogin(contrasena.value, contrasena);
+    const val6 = validaEntreContraseñas(confirmarContrasena.value, contrasena.value, confirmarContrasena);
+    return val1 && val2 && val3 && val4 && val5 && val6;
 }
 
 function validarBotonInicioSesion(correoElectronico, contrasena) {
@@ -187,6 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
             switch (t.dataset.validate) {
                 case 'nombre_completo':
                     validarNombreCompleto(t.value.trim(), t);
+                    break;
+                case 'apellido_completo':
+                    validarApellidoCompleto(t.value.trim(), t);
                     break;
                 case 'correo_electronico':
                     validarCorreoElectronico(t.value.trim(), t);
