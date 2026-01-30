@@ -50,7 +50,7 @@ if (typeof Biblioteca === 'undefined') {
 
         cargarDatosPrueba: function () {
             this.agregarLibro(new Libro("Cien años de soledad", "Gabriel G. Marquez", "Novela", "https://images.penguinrandomhouse.com/cover/9780307474728"), false);
-            this.agregarLibro(new Libro("El Principito", "Antoine de Saint-Exupéry", "Infantil", "https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg"), false);
+            this.agregarLibro(new Libro("El Principito", "Antoine de Saint-Exupéry", "Infantil", "https://tse2.mm.bing.net/th/id/OIP.zNEmw5eIZb0py_ccn9smbgHaJd?w=2000&h=2555&rs=1&pid=ImgDetMain&o=7&rm=3"), false);
             this.agregarLibro(new Libro("Clean Code", "Robert C. Martin", "Tecnología", "https://m.media-amazon.com/images/I/41xShlnTZTL.jpg"), false);
         },
 
