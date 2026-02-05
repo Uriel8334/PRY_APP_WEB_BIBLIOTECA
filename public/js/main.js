@@ -1,4 +1,3 @@
-var Libros = [];
 var usuarios = [];
 
 const usuario = (nombre_completo, apellido_completo, correo_electronico, nombre_usuario, contrasena) => {
@@ -14,30 +13,18 @@ const usuario = (nombre_completo, apellido_completo, correo_electronico, nombre_
     }
 }
 
-const libro = (titulo, autor, anio_publicacion, genero) => {
-    return {
-        titulo,
-        autor,
-        anio_publicacion,
-        genero,
-        informacion: function () {
-            return `Título: ${this.titulo}, Autor: ${this.autor}, Año de Publicación: ${this.anio_publicacion}, Género: ${this.genero}`;
-        }
-    }
-}
-
 function inicializar() {
     usuarios = cargarDelStorage('usuariosData');
 }
 
 async function registroUsuario() {
-    const nombreCompleto = document.getElementById('nombreCompleto');
-    const apellidoCompleto = document.getElementById('apellidoCompleto');
-    const correoElectronico = document.getElementById('correoElectronico');
-    const nombreUsuario = document.getElementById('nombreUsuario');
-    const contrasena = document.getElementById('contrasena');
-    const confirmarContrasena = document.getElementById('confirmarContrasena');
-    const terminosCondiciones = document.getElementById('terminosCondiciones').checked;
+    const nombreCompleto = getById('nombreCompleto');
+    const apellidoCompleto = getById('apellidoCompleto');
+    const correoElectronico = getById('correoElectronico');
+    const nombreUsuario = getById('nombreUsuario');
+    const contrasena = getById('contrasena');
+    const confirmarContrasena = getById('confirmarContrasena');
+    const terminosCondiciones = getById('terminosCondiciones').checked;
     if (!validarBotonUsuario(nombreCompleto, apellidoCompleto, correoElectronico, nombreUsuario, contrasena, confirmarContrasena)) {
         return;
     } else if (!terminosCondiciones) {
@@ -65,8 +52,8 @@ function entradaInicioSesion(usuarioEncontrado, email) {
 }
 
 function registroIniciarSesion() {
-    const nombreUsuario = document.getElementById('inicioUsuario');
-    const contrasena = document.getElementById('contraseña');
+    const nombreUsuario = getById('inicioUsuario');
+    const contrasena = getById('contraseña');
     if (!validarBotonInicioSesion(nombreUsuario, contrasena)) {
         return;
     }
@@ -203,28 +190,28 @@ document.addEventListener('DOMContentLoaded', function () {
     activityItems(menuItemsBookshop, selectDropdown);
     activityMenssage(selectTooltips);
     activityMenssage(selectDropdown);
-    const searchToggle = document.getElementById('searchToggle');
-    const searchForm = document.getElementById('searchForm');
-    const searchInput = document.getElementById('searchInput');
-    const closeSearch = document.getElementById('closeSearch');
+    const searchToggle = getById('searchToggle');
+    const searchForm = getById('searchForm');
+    const searchInput = getById('searchInput');
+    const closeSearch = getById('closeSearch');
     manejoCerrarAbrirBuscador(searchToggle, searchForm, searchInput, closeSearch);
-    const userProfile1 = document.getElementById('userProfile1');
-    const userProfile = document.getElementById('userProfile');
+    const userProfile1 = getById('userProfile1');
+    const userProfile = getById('userProfile');
     
-    const alertsMenu = document.getElementById('alertsMenu');
-    const alertIcons = document.getElementById('alertsIcon');
+    const alertsMenu = getById('alertsMenu');
+    const alertIcons = getById('alertsIcon');
     manejoCerrarAbrirItem(alertIcons, alertsMenu);
     manejoCerrarAbrirItem(userProfile1,userProfile);
 
     const storedId = cargarSesionUsuario('currentUserId');
     if (storedId) {
         const u = usuarios.find(user => user.nombre_usuario === storedId || user.correo_electronico === storedId);
-        if (u && document.getElementById('entradaNombreCompleto')) {
+        if (u && getById('entradaNombreCompleto')) {
             entradaInicioSesion(u, u.correo_electronico);
         }
     }
 
-    var btnRegistrarUsuario = document.getElementById('btnRegistrarUsuario');
+    var btnRegistrarUsuario = getById('btnRegistrarUsuario');
     if (btnRegistrarUsuario) {
         btnRegistrarUsuario.addEventListener('click', function (e) {
             e.preventDefault();
@@ -232,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    var btnIniciarSesion = document.getElementById('btnIniciarSesion');
+    var btnIniciarSesion = getById('btnIniciarSesion');
     if (btnIniciarSesion) {
         btnIniciarSesion.addEventListener('click', function (e) {
             e.preventDefault();

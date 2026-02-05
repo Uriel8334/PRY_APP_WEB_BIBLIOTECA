@@ -191,7 +191,7 @@ function validarBotonInicioSesion(correoElectronico, contrasena) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const formulario_login = document.getElementById('formularioLogin');
+    const formulario_login = getById('formularioLogin');
     if (formulario_login) {
         formulario_login.addEventListener('input', (e) => {
             const t = e.target;
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const formulario_registro_usuario = document.getElementById('formularioRegistroUsuario');
+    const formulario_registro_usuario = getById('formularioRegistroUsuario');
     if (formulario_registro_usuario) {
         formulario_registro_usuario.addEventListener('input', (e) => {
             const t = e.target;
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     validarContraseñaLogin(t.value.trim(), t);
                     break;
                 case 'confirmar_contrasena':
-                    validaEntreContraseñas(t.value.trim(), document.getElementById('contrasena').value, t);
+                    validaEntreContraseñas(t.value.trim(), getById('contrasena').value, t);
                     break;
             }
         });

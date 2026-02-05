@@ -195,11 +195,13 @@ var ProductosLibreria = (function () {
             badgeDisponibilidad.className = 'badge badge-disponible';
             btnPrestar.style.display = 'inline-block';
             btnDevolver.style.display = 'none';
+            // NotificationServices.mostrarNotificacionDevolucion(libro);
         } else {
             badgeDisponibilidad.textContent = 'Prestado';
             badgeDisponibilidad.className = 'badge badge-prestado';
             btnPrestar.style.display = 'none';
             btnDevolver.style.display = 'inline-block';
+            // NotificationServices.mostrarNotificacionPrestamo(libro);
         }
 
         // Mostrar el modal
@@ -218,7 +220,7 @@ var ProductosLibreria = (function () {
 
         if (libro) {
             mostrarNotificacion('Préstamo solicitado exitosamente', 'success');
-
+            NotificationService.mostrarNotificacionPrestamo(libro);
             // Actualizar el modal
             setTimeout(() => {
                 abrirModal(libro.id);
@@ -234,6 +236,7 @@ var ProductosLibreria = (function () {
 
         if (libro) {
             mostrarNotificacion('Devolución registrada exitosamente', 'success');
+            NotificationService.mostrarNotificacionDevolucion(libro);
 
             // Actualizar el modal
             setTimeout(() => {

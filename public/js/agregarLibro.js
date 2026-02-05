@@ -1,7 +1,7 @@
 // MODULO PARA AGREGAR LIBROS DINAMICAMENTE
 // Usando las funciones utilitarias de utils.js
 
-(function() {
+(function () {
     'use strict';
     // Referencias a elementos del DOM usando getById
     const elementos = {
@@ -17,7 +17,7 @@
     };
 
     // Inicialización al cargar el DOM
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         inicializarElementos();
         configurarEventos();
         actualizarListaLibros();
@@ -65,14 +65,14 @@
      */
     function manejarCambioPortada() {
         const url = getValue(elementos.inputPortada).trim();
-        
+
         if (url) {
             // Mostrar preview
             elementos.previewImage.src = url;
             removeClass(elementos.previewContainer, 'd-none');
-            
+
             // Manejar error de carga de imagen
-            elementos.previewImage.onerror = function() {
+            elementos.previewImage.onerror = function () {
                 addClass(elementos.previewContainer, 'd-none');
                 mostrarAlerta('La URL de la imagen no es válida', 'warning');
             };
@@ -86,7 +86,7 @@
      */
     function manejarSubmitFormulario(e) {
         e.preventDefault();
-        
+
         // Validar formulario
         if (!elementos.form.checkValidity()) {
             e.stopPropagation();
@@ -109,19 +109,22 @@
         // Crear nuevo libro usando la clase Libro
         try {
             const nuevoLibro = new window.Libro(titulo, autor, genero, portada);
-            
+
             // Agregar a la biblioteca
             window.Biblioteca.agregarLibro(nuevoLibro);
-            
+
             // Mostrar mensaje de éxito
             mostrarAlerta(`¡Libro "${titulo}" agregado exitosamente!`, 'success');
-            
+
             // Limpiar formulario
             limpiarFormulario();
-            
+
             // Actualizar lista de libros
             actualizarListaLibros();
-            
+
+            // Agregar notificación persistente
+            NotificationService.mostrarNotificacionAgregar(nuevoLibro);
+
         } catch (error) {
             console.error('Error al agregar libro:', error);
             mostrarAlerta('Error al agregar el libro. Intenta de nuevo.', 'danger');
@@ -135,7 +138,7 @@
         elementos.form.reset();
         removeClass(elementos.form, 'was-validated');
         addClass(elementos.previewContainer, 'd-none');
-        
+
         // Poner foco en el primer campo
         if (elementos.inputTitulo) {
             elementos.inputTitulo.focus();
@@ -219,11 +222,15 @@
      */
     function eliminarLibro(id, titulo) {
         if (confirm(`¿Estás seguro de eliminar "${titulo}"?`)) {
+            const libro = window.Biblioteca.libros.find(l => l.id === id);
             const eliminado = window.Biblioteca.eliminarLibro(id);
-            
-            if (eliminado) {
+
+            if (eliminado && libro) {
                 mostrarAlerta(`Libro "${titulo}" eliminado correctamente`, 'success');
                 actualizarListaLibros();
+
+                // Agregar notificación persistente
+                NotificationService.mostrarNotificacionEliminacion(libro);
             } else {
                 mostrarAlerta('Error al eliminar el libro', 'danger');
             }
