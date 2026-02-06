@@ -33,6 +33,9 @@ function loadPage(event, pageUrl) {
                 if (window.ProductosLibreria && typeof window.ProductosLibreria.init === 'function') {
                     window.ProductosLibreria.init();
                 }
+                if (window.AgregarLibro && typeof window.AgregarLibro.init === 'function') {
+                    window.AgregarLibro.init();
+                }
             });
             updatePageTitle(doc);
         })

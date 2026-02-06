@@ -16,12 +16,23 @@
         btnGuardar: null
     };
 
-    // Inicialización al cargar el DOM
-    document.addEventListener('DOMContentLoaded', function () {
+    /**
+     * Función de inicialización del módulo
+     * Puede ser llamada manualmente o automáticamente en DOMContentLoaded
+     */
+    function init() {
         inicializarElementos();
         configurarEventos();
         actualizarListaLibros();
-    });
+    }
+
+    // Inicialización al cargar el DOM (para acceso directo a la página)
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        // DOM ya está listo (carga dinámica)
+        init();
+    }
 
     /**
      * Inicializa todas las referencias a elementos del DOM
@@ -241,6 +252,7 @@
 
     // Exponer funciones públicas si es necesario
     window.AgregarLibro = {
+        init: init,
         actualizarListaLibros: actualizarListaLibros
     };
 
