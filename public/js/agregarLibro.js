@@ -113,17 +113,17 @@
             // Agregar a la biblioteca
             window.Biblioteca.agregarLibro(nuevoLibro);
 
-            // Mostrar mensaje de éxito
-            mostrarAlerta(`¡Libro "${titulo}" agregado exitosamente!`, 'success');
+            // Mostrar mensaje de éxito y luego actualizar
+            mostrarAlerta(`¡Libro "${titulo}" agregado exitosamente!`, 'success').then(() => {
+                // Limpiar formulario
+                limpiarFormulario();
 
-            // Limpiar formulario
-            limpiarFormulario();
+                // Actualizar lista de libros
+                actualizarListaLibros();
 
-            // Actualizar lista de libros
-            actualizarListaLibros();
-
-            // Agregar notificación persistente
-            NotificationService.mostrarNotificacionAgregar(nuevoLibro);
+                // Agregar notificación persistente
+                NotificationService.mostrarNotificacionAgregar(nuevoLibro);
+            });
 
         } catch (error) {
             console.error('Error al agregar libro:', error);
@@ -221,20 +221,22 @@
      * Elimina un libro de la biblioteca
      */
     function eliminarLibro(id, titulo) {
-        if (confirm(`¿Estás seguro de eliminar "${titulo}"?`)) {
-            const libro = window.Biblioteca.libros.find(l => l.id === id);
-            const eliminado = window.Biblioteca.eliminarLibro(id);
+        confirmarAccion(`¿Estás seguro de eliminar "${titulo}"?`).then((confirmado) => {
+            if (confirmado) {
+                const libro = window.Biblioteca.libros.find(l => l.id === id);
+                const eliminado = window.Biblioteca.eliminarLibro(id);
 
-            if (eliminado && libro) {
-                mostrarAlerta(`Libro "${titulo}" eliminado correctamente`, 'success');
-                actualizarListaLibros();
+                if (eliminado && libro) {
+                    mostrarAlerta(`Libro "${titulo}" eliminado correctamente`, 'success');
+                    actualizarListaLibros();
 
-                // Agregar notificación persistente
-                NotificationService.mostrarNotificacionEliminacion(libro);
-            } else {
-                mostrarAlerta('Error al eliminar el libro', 'danger');
+                    // Agregar notificación persistente
+                    NotificationService.mostrarNotificacionEliminacion(libro);
+                } else {
+                    mostrarAlerta('Error al eliminar el libro', 'danger');
+                }
             }
-        }
+        });
     }
 
     // Exponer funciones públicas si es necesario
