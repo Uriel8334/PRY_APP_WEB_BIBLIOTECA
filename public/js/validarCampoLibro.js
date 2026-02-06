@@ -6,7 +6,7 @@
 (function () {
     'use strict';
 
-    // Objeto global para exponer la funcionalidad
+    
     window.ValidacionLibro = {
         inicializar: configurarValidaciones,
         resetear: resetearValidaciones
@@ -16,16 +16,15 @@
     let previewImage = null;
 
     /**
-     * Esta función debe llamarse CADA VEZ que el HTML del formulario
-     * se inyecta en el DOM.
+    Esta función debe llamarse CADA VEZ que el HTML del formulariose inyecta en el DOM.
      */
     function configurarValidaciones() {
         const form = document.getElementById('form-agregar-libro');
         
-        // Si el formulario no existe en el DOM actual, no hacemos nada
-        if (!form) return; 
+    
+        if (!form) return;
 
-        // Referencias frescas a los elementos (porque el DOM cambió)
+    
         inputs = {
             titulo: document.getElementById('input-titulo'),
             autor: document.getElementById('input-autor'),
@@ -34,18 +33,18 @@
         };
         previewImage = document.getElementById('preview-image');
 
-        // Asignar listeners
+        
         if (inputs.titulo) inputs.titulo.addEventListener('input', validarTitulo);
         if (inputs.autor) inputs.autor.addEventListener('input', validarAutor);
         if (inputs.genero) inputs.genero.addEventListener('change', validarGenero);
         
         if (inputs.portada) {
             inputs.portada.addEventListener('input', validarUrlPortada);
-            // Validación al perder el foco para asegurar
+            
             inputs.portada.addEventListener('blur', validarUrlPortada);
         }
 
-        // Listeners para la imagen (éxito/error de carga)
+
         if (previewImage) {
             previewImage.addEventListener('load', function() {
                 if (inputs.portada && inputs.portada.value !== '') {
@@ -72,7 +71,7 @@
         });
     }
 
-    // --- Funciones de Validación (Misma lógica que antes) ---
+    //Funciones de Validacion
 
     const marcarInvalido = (input, mensaje) => {
         input.classList.add('is-invalid');
@@ -128,7 +127,7 @@
         if (valor.length === 0) return marcarInvalido(el, 'La URL es obligatoria.') && false;
         if (!urlPattern.test(valor)) return marcarInvalido(el, 'Debe ser URL (http/https).') && false;
         
-        // Quitamos error visual temporalmente, esperamos a que la imagen cargue (listeners arriba)
+    
         el.setCustomValidity('');
         el.classList.remove('is-invalid');
         return true;
