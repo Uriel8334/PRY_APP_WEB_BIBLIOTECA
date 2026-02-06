@@ -251,8 +251,8 @@ var ProductosLibreria = (function () {
         if (window.NotificationService) {
             window.NotificationService.mostrarNotificacion(mensaje, tipo);
         } else {
-            // Fallback: mostrar alerta simple
-            alert(mensaje);
+            // Fallback: usar mostrarAlerta de swetalert.js
+            mostrarAlerta(mensaje, tipo);
         }
     }
 

@@ -37,9 +37,10 @@ async function registroUsuario() {
     const nuevo_usuario = usuario(nombreCompleto.value, apellidoCompleto.value, correoElectronico.value, nombreUsuario.value, contrasena.value);
     usuarios.push(nuevo_usuario);
     guardarEnStorage(usuarios, 'usuariosData');
-    window.location.href = "login.html";
     console.log('Usuario registrado:', nuevo_usuario.informacion());
-    alert('Usuario registrado exitosamente.');
+    mostrarAlertaBasica('¡Registro exitoso!', 'Usuario registrado exitosamente.', 'success').then(() => {
+        window.location.href = "login.html";
+    });
 }
 
 function entradaInicioSesion(usuarioEncontrado, email) {
@@ -66,11 +67,12 @@ function registroIniciarSesion() {
     if (usuarioEncontrado) {
         guardarSesionUsuario('currentUserId', usuarioEncontrado.nombre_usuario);
         console.log('Inicio de sesión exitoso:', usuarioEncontrado);
-        alert('Inicio de sesión exitoso.');
-        window.location.href = "../index.html";
+        mostrarAlertaBasica('¡Bienvenido!', 'Inicio de sesión exitoso.', 'success').then(() => {
+            window.location.href = "../index.html";
+        });
     } else {
         console.log('Credenciales inválidas.');
-        alert('Credenciales inválidas.');
+        mostrarAlertaBasica('Error', 'Credenciales inválidas.', 'error');
     }
 }
 

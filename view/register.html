@@ -52,7 +52,7 @@
                                 <input type="text" class="form-control" name="fullname" placeholder="Julio Ariel"
                                     id="nombreCompleto" data-validate="nombre_completo" autocomplete="new-name"
                                     required>
-                                <!-- <div class="invalid-tooltip"></div> -->
+                                <div class="invalid-feedback"></div>
                             </div>
                             
                             <div class="input-custom-group">
@@ -62,7 +62,7 @@
                                 <input type="text" class="form-control" name="lastname" placeholder="Pérez Gómez"
                                     id="apellidoCompleto" data-validate="apellido_completo" autocomplete="new-lastname"
                                     required>
-                                <!-- <div class="invalid-feedback"></div> -->
+                                <div class="invalid-feedback"></div>
                             </div>
 
                             <div class="input-custom-group ">
@@ -72,7 +72,7 @@
                                 <input type="email" class="form-control" name="email"
                                     placeholder="Tu correo electrónico" id="correoElectronico"
                                     data-validate="correo_electronico" required>
-                                <!-- <div class="invalid-feedback "></div> -->
+                                <div class="invalid-feedback"></div>
                             </div>
 
                             <div class="input-custom-group">
@@ -82,7 +82,7 @@
                                 <input type="text" class="form-control" name="username" placeholder="Nombre de usuario"
                                     id="nombreUsuario" data-validate="nombre_usuario" autocomplete="new-username"
                                     required>
-                                <!-- <div class="invalid-feedback"></div> -->
+                                <div class="invalid-feedback"></div>
                             </div>
 
                             <div class="input-custom-group">
@@ -91,8 +91,7 @@
                                 </svg>
                                 <input type="password" class="form-control" name="password" placeholder="Contraseña"
                                     id="contrasena" data-validate="contrasena" autocomplete="new-password" required>
-
-                                <!-- <div class="invalid-feedback"></div> -->
+                                <div class="invalid-feedback"></div>
                             </div>
 
                             <div class="input-custom-group ">
@@ -102,8 +101,7 @@
                                 <input type="password" class="form-control" name="confirm_password"
                                     placeholder="Repite tu contraseña" id="confirmarContrasena"
                                     data-validate="confirmar_contrasena" autocomplete="new-password" required>
-
-                                <!-- <div class="invalid-feedback"></div> -->
+                                <div class="invalid-feedback"></div>
                             </div>
 
                             <div class="mb-4 form-check">
@@ -112,7 +110,7 @@
                                         class="text-dark fw-bold text-decoration-underline">Términos de servicio</a>
                                 </label>
                                 <input type="checkbox" class="form-check-input" id="terminosCondiciones" required>
-                                <!-- <div class="invalid-feedback"></div> -->
+                                <div class="invalid-feedback"></div>
                             </div>
 
                             <div class="d-flex justify-content-between align-items-center p-0">
@@ -144,6 +142,9 @@
         </div>
     </main>
     <footer></footer>
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../public/js/swetalert.js"></script>
     <script src="../public/js/utils.js"></script>
     <script src="../public/js/main.js"></script>
     <script src="../public/js/storage.js"></script>

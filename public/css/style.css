@@ -53,20 +53,24 @@ nav.page-navigation li {
 }
 
 .input-custom-group {
+    position: relative;
     display: flex;
     align-items: center;
     border-radius: 6px;
     border-bottom: 2px solid #000000;
-    /* Línea gris suave */
     padding-bottom: 5px;
-    margin-bottom: 1.5rem;
-    /* Espacio entre inputs */
+    margin-bottom: 1.8rem;
     transition: border-color 0.3s ease;
+    flex-wrap: wrap;
 }
 
-/* Efecto al hacer clic: la línea se pone azul */
 .input-custom-group:focus-within {
     border-bottom: 2px solid rgb(78, 194, 108);
+}
+
+/* Cuando hay error: la línea se pone roja */
+.input-custom-group:has(.is-invalid) {
+    border-bottom: 2px solid #dc3545;
 }
 
 /* El input en sí: transparente y sin bordes */
@@ -75,10 +79,20 @@ nav.page-navigation li {
     background: transparent;
     outline: none;
     box-shadow: none !important;
-    /* Quita el brillo azul feo */
     padding-left: 10px;
     color: #495057;
     font-weight: 500;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Mensaje de error debajo del input, ocupa todo el ancho */
+.input-custom-group .invalid-feedback {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    font-size: 0.82rem;
+    padding-left: 10px;
 }
 
 /* Color de los iconos */

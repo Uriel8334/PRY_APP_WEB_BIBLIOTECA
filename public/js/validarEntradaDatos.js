@@ -1,17 +1,19 @@
 function mensajeError(mensaje, elementoId) {
     elementoId.classList.add('is-invalid');
-    var feedback = elementoId.parentNode.querySelector('.invalid-tooltip');
+    var feedback = elementoId.parentNode.querySelector('.invalid-feedback');
     if (feedback) {
-        feedback.innerHTML =  mensaje;
+        feedback.innerHTML = mensaje;
+        feedback.style.display = 'block';
     }
 }
 
 function limpiarError(elemento) {
     elemento.classList.remove('is-invalid');
     elemento.classList.add('is-valid');
-    var feedback = elemento.parentNode.querySelector('.invalid-tooltip');
+    var feedback = elemento.parentNode.querySelector('.invalid-feedback');
     if (feedback) {
         feedback.textContent = '';
+        feedback.style.display = 'none';
     }
 }
 
@@ -107,7 +109,7 @@ function validarNombreUsuario(valor, elemento) {
         mensajeError('El nombre de usuario es obligatorio.', elemento);
         return false;
     } else if (!nombreUsuarioRegex.test(valor)) {
-        mensajeError('El nombre de usuario debe tener entre 3 y 20 caracteres y solo puede contener letras, números y guiones bajos.', elemento);
+        mensajeError('Debe tener entre 3 y 20 caracteres y solo puede contener letras, números y guiones bajos.', elemento);
         return false;
     } else {
         limpiarError(elemento);
@@ -122,7 +124,7 @@ function validarContraseñaLogin(valor, elemento) {
         mensajeError('La contraseña es obligatoria.', elemento);
         return false;
     } else if (!contrasenaRegex.test(valor)) {
-        mensajeError('La contraseña debe tener al menos 8 caracteres, incluyendo al menos una letra y un número.', elemento);
+        mensajeError('Debe tener al menos 8 caracteres, incluyendo al menos una letra y un número', elemento);
         return false;
     } else {
         limpiarError(elemento);
