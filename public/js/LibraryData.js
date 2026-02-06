@@ -58,7 +58,7 @@ if (typeof Biblioteca === 'undefined') {
             this.agregarLibro(new Libro("1984", "George Orwell", "Ciencia Ficción", "https://m.media-amazon.com/images/I/41GD5QJ1YDL._SX324_BO1,204,203,200_.jpg"), false);
         },
 
-        // CRUD
+        
 
         // El parámetro 'guardar' es opcional, sirve para no guardar repetidamente en la carga inicial
         agregarLibro: function (nuevoLibro, guardar = true) {

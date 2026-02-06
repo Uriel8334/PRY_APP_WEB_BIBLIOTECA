@@ -14,7 +14,7 @@ function getByIds(...ids) {
 }
 
 // Establece el texto de un elemento
- 
+
 function setText(elemento, texto) {
     const el = typeof elemento === 'string' ? getById(elemento) : elemento;
     if (el) el.textContent = texto;
@@ -110,7 +110,6 @@ function createElement(tag, attrs = {}, content = '') {
 }
 
 //Muestra un mensaje de alerta personalizado
- 
 function mostrarAlerta(mensaje, tipo = 'info') {
     const alertDiv = createElement('div', {
         class: `alert alert-${tipo} alert-dismissible fade show`,
@@ -132,5 +131,5 @@ function mostrarAlerta(mensaje, tipo = 'info') {
     // Auto-remover después de 5 segundos
     setTimeout(() => {
         alertDiv.remove();
-    }, 5000);
+    }, 500);
 }
